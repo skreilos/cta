@@ -1,0 +1,246 @@
+[
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "What three resources do organizations leverage to achieve business outcomes?",
+    "a": "People, Processes, Technology"
+  },
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "Name 3 key business outcomes ServiceNow addresses.",
+    "a": ["Single system of truth for IT", "Optimizing service delivery", "Mitigating cybersecurity risks"]
+  },
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "Name 2 more key business outcomes (beyond IT & security).",
+    "a": ["Managing application inventory", "Reimagining customer engagement"]
+  },
+  {
+    "module": "Articulate the Value", "type": "why",
+    "q": "Why must a value proposition be backed by clear evidence?",
+    "a": "To demonstrate tangible, measurable benefits — data, real-world examples, and customer success stories make it credible and easier for customers to see the direct impact of their investment."
+  },
+  {
+    "module": "Articulate the Value", "type": "diff",
+    "q": "What is the difference between Now Create and the MyNow Best Practices Portal?",
+    "a": ["Now Create = the methodology (the 'what and how')", "MyNow Best Practices Portal = the platform where Now Create content is accessed"]
+  },
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "What is the purpose of the MyNow Best Practices Portal?",
+    "a": "Helps customers achieve faster time to value with less risk. Built on insights from thousands of successful implementations — on-demand guidance for every ServiceNow project."
+  },
+  {
+    "module": "Articulate the Value", "type": "why",
+    "q": "Why do Success Packs NOT belong to the Resource Center?",
+    "a": "Success Packs are the heart of Now Create (the methodology). The Resource Center is a separate repository for sales/value assets like analyst reports, case studies, and eBooks."
+  },
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "What is an analyst report and who publishes them?",
+    "a": "Research documents published by independent analyst firms (e.g. Forrester) evaluating companies, products, or industry trends — provide insights, competitive comparisons, and expert opinions."
+  },
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "What is a solution brief and what does it often identify?",
+    "a": ["Short document: overview of a ServiceNow product, its features, benefits & use cases", "Indicates types of benefits the solution provides", "Identifies the personas receiving the benefit"]
+  },
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "What framework do ServiceNow eBooks use to structure content?",
+    "a": ["Pain = challenges organizations face", "Pain relievers = solutions", "Gain creators = benefits", "Gain = value delivered to customers"]
+  },
+  {
+    "module": "Articulate the Value", "type": "how",
+    "q": "How should you tailor your message for a CIO vs. a Developer?",
+    "a": ["CIO: business value, ROI, strategic impact, high-level security & compliance", "Developer: APIs, technical specs, integration patterns, error handling"]
+  },
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "What does an IT Leader (IT Director, Platform Owner) focus on?",
+    "a": ["System performance, governance, scalability", "Alignment with IT strategy & enterprise architecture", "Security, compliance, data governance", "Scalability & long-term maintainability"]
+  },
+  {
+    "module": "Articulate the Value", "type": "what",
+    "q": "What do Process Users (Service Desk, Business Users) focus on?",
+    "a": ["User experience & workflow improvements", "Simplified tasks & reduced manual effort", "Automation & self-service options", "Required training or onboarding"]
+  },
+  {
+    "module": "Articulate the Value", "type": "how",
+    "q": "What are the 3 steps to build a value proposition?",
+    "a": ["1. Understand the customer's desired outcomes", "2. Identify the relevant solutions and capabilities", "3. Communicate the value-added metrics that matter to the customer"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "what",
+    "q": "What do the letters D-E-A-P stand for in technical architecture domains?",
+    "a": ["D — Data Management", "E — Environment Management", "A — App Development Management", "P — Platform Management"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "why",
+    "q": "Why is Data Management (D) important for the Now Platform?",
+    "a": "Establishes standards & controls for high data quality, security, and reliability. Data integrity & consistency leads to better decision-making and operational efficiency."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "what",
+    "q": "What does Environment Management (E) define?",
+    "a": ["Architecture & processes for development, testing & release workflows", "Security controls & user access based on personas & permissions per instance"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "why",
+    "q": "Why does App Development Management (A) matter?",
+    "a": "Ensures high-quality applications and reduces technical debt. Unified tools across the dev cycle + standardized methods for common implementation projects."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "what",
+    "q": "What does Platform Management (P) govern?",
+    "a": ["Access, upgrades, patches, security & maintenance", "Long-term: reduced maintenance effort, improved end-user experience", "Efficient upgrade/patching processes for fast adoption of new features"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "how",
+    "q": "What are the 3 steps to assess current architecture?",
+    "a": ["1. Identify key stakeholders & gather information", "2. Document, analyze, and interpret results", "3. Document findings and present to stakeholders"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "how",
+    "q": "What are the leading practices for conducting stakeholder interviews?",
+    "a": ["Prepare thoroughly", "Under one hour", "Max. two participants per session", "Open-ended questions", "Take relevant notes", "Ask for documents"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "diff",
+    "q": "What is the difference between CUS and ENG in the heatmap?",
+    "a": ["CUS = Customer Effort (how much effort the customer must invest)", "ENG = Engagement Effort (how much effort the engagement/consultant team must invest)"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "what",
+    "q": "What do the three heatmap colors signify?",
+    "a": ["Green = no gap / baseline functionality", "Yellow = minor gap / requires configuration", "Pink/Red = significant gap / must be built or fully unknown"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "why",
+    "q": "Why must you always present an effort estimation — even if approximate?",
+    "a": "Failing to present any effort estimation undermines credibility. Working notes serve as a transparent, adjustable appendix in the final presentation."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "what",
+    "q": "What 4 categories should gathered documentation be organized into?",
+    "a": ["Applications & Software", "Infrastructure", "Data Flows", "Security & Compliance"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "why",
+    "q": "Why is securing stakeholder buy-in the most important aspect of any architectural assessment?",
+    "a": "Without buy-in, the format, findings, and recommendations won't be accepted. Engaging stakeholders early prevents surprises and ensures the playback session is a validation, not a confrontation."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "what",
+    "q": "What is transition architecture and why is it needed?",
+    "a": ["Bridge between current state and to-be state via incremental phases", "Manages complexity & risk while ensuring business continuity", "Clearly explains the purpose of each phase to stakeholders"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "diff",
+    "q": "What extra step is needed when the customer already uses ServiceNow?",
+    "a": ["Use a ServiceNow capabilities map to identify what is licensed, activated & in use", "Identify hot spots (areas needing improvement)", "Distinguish used vs. unused products to map out future architecture"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "why",
+    "q": "Why should you not involve only IT teams in architecture interviews?",
+    "a": "IT teams focus primarily on technical aspects, missing how technology is actually used in practice. Business stakeholders & end users provide the full picture."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "why",
+    "q": "Why is a 30-40 person interview session ineffective?",
+    "a": "Large meetings become unfocused — competing priorities, limited participation, no deep discussion. Max. two participants per session ensures productive, targeted conversations."
+  },
+
+  {
+    "module": "Communication Essentials", "type": "what",
+    "q": "What are the 5 layers of the Pyramid Model of Communication (bottom to top)?",
+    "a": ["1. Credibility Foundation — trust through reliability and professionalism", "2. Information Governance — share the right information with the right people", "3. Message Architecture — structure content, audience, and timing", "4. Expression Strategy — tone, delivery style, and clarity", "5. Contextual Personalization — tailor communication to individual needs"]
+  },
+  {
+    "module": "Communication Essentials", "type": "why",
+    "q": "Why do messages get misinterpreted?",
+    "a": ["Different knowledge levels between sender and receiver", "Noise from assumptions or distractions", "Lack of feedback"]
+  },
+  {
+    "module": "Communication Essentials", "type": "how",
+    "q": "What are the 5 steps to communicate value effectively?",
+    "a": ["1. Discover — encourage conversations to identify pain points", "2. Listen & empathize — reflect concerns and show understanding", "3. Tailor message — map capabilities to needs", "4. Align to objectives — link to business outcomes", "5. Quantify — share measurable benefits"]
+  },
+  {
+    "module": "Communication Essentials", "type": "what",
+    "q": "What are the key Dos for effective presentations?",
+    "a": ["Start with the audience's goal", "Use visuals", "Show enthusiasm", "Use clear structure", "Practice thoroughly", "End with a clear action"]
+  },
+  {
+    "module": "Communication Essentials", "type": "what",
+    "q": "What are the key Don'ts for presentations?",
+    "a": ["Overload slides with text", "Dive into technical depth too early", "Assume shared understanding", "Present without a purpose", "Leave next steps unclear"]
+  },
+  {
+    "module": "Communication Essentials", "type": "diff",
+    "q": "What is the difference between the SBI and CEDAR feedback models?",
+    "a": ["SBI: Situation → Behavior → Impact (concise, event-focused)", "CEDAR: Context → Example → Diagnosis → Action → Review (deeper, development-focused)"]
+  },
+  {
+    "module": "Communication Essentials", "type": "why",
+    "q": "Why must architects translate complex information into clear messages?",
+    "a": "To prevent delays and misalignment. Architects work with audiences of varying technical backgrounds — unclear communication leads to wrong decisions and lost stakeholder trust."
+  },
+
+  {
+    "module": "Articulate the Value", "type": "how",
+    "q": "What 3 things should you keep in mind when presenting platform value?",
+    "a": ["Link customer goals and challenges to measurable business impact", "Tailor the message to address priorities of different stakeholders", "Connect business drivers and desired outcomes with the right solutions and measurable KPIs"]
+  },
+
+  {
+    "module": "Current & To-Be Arch.", "type": "how",
+    "q": "What are the 4 steps to document and chart findings after stakeholder interviews?",
+    "a": ["1. Structure stakeholder feedback and documentation in clear categories", "2. Use charts or heatmaps to visualize effort levels and highlight focus areas", "3. Provide initial effort estimates and maintain transparency", "4. Summarize insights in structured charts for clarity and alignment"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "diff",
+    "q": "In the ServiceNow capability map, what do the two color codes mean?",
+    "a": ["Pink/highlight = improvement area / hotspot (needs attention)", "Light blue = licensed (product is licensed but usage may vary)"]
+  },
+
+  {
+    "module": "Role of the CTA", "type": "what",
+    "q": "What are the key functions of a Certified Technical Architect?",
+    "a": ["Translate customer requirements into architectural designs", "Develop solutions complying with leading practices and business requirements", "Guide and participate in technical governance processes", "Collaborate on platform operating model design for successful go-lives and end-user adoption", "Leverage platform experience to reduce risk and minimize technical debt"]
+  },
+  {
+    "module": "Role of the CTA", "type": "why",
+    "q": "Why does the CTA program combine technical and soft skills?",
+    "a": ["Technical expertise alone is not enough to deliver complex ServiceNow implementations", "CTAs also need service management, operational, and soft skills — communication, negotiation, collaboration, influencing — to help customers achieve their business outcomes and transformation visions"]
+  },
+  {
+    "module": "Role of the CTA", "type": "what",
+    "q": "What is the CTA's role as a 'technical gateway' in a ServiceNow engagement?",
+    "a": "Bridges the gap between initial designs from sales conversations and the delivery phase — connecting project managers, business analysts, solution architects, and developers."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "what",
+    "q": "What elements should a to-be architecture diagram include?",
+    "a": ["ServiceNow instances", "Disparate (heterogeneous) systems", "Integrations", "Authentication systems", "Portals and data lakes", "External service providers"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "how",
+    "q": "What are the key Data Management interview questions in an architectural assessment?",
+    "a": ["Data ownership: Who decides on data-related decisions?", "Data availability: Is data accessible for analysis? Existing reports?", "Data standards: Established standards for formatting and governance?", "Integration standards: Defined standards for cross-system data integration?", "Security policies: What policies protect the data?"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "how",
+    "q": "What are the key Application Development interview questions in an architectural assessment?",
+    "a": ["Existing guidelines: Established best practices or 'golden rules'?", "Customization scope: Extent of customization and significant modifications?", "Development team: Number of developers working on the application?", "Configuration vs. customization: Clear distinction in current setup?", "Essential features: Must-have features or functionalities?"]
+  },
+  {
+    "module": "Articulate the Value", "type": "diff",
+    "q": "What is the difference between a customer case study and an analyst report in the Resource Center?",
+    "a": ["Customer case study: in-depth documentation of a real implementation with actual results — shows ServiceNow value through direct customer experience", "Analyst report: research published by an independent firm (e.g. Forrester) evaluating companies, products, or trends — provides competitive comparisons and expert opinions"]
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "how",
+    "q": "What 3 principles guide preparation of the final architecture presentation?",
+    "a": ["Define the format based on stakeholder preferences (diagrams, reports, dashboards)", "Make it transparent: involve technical teams, business leaders, and end users — gather feedback, refine, validate", "Present the final readout: key findings, recommended solutions, expected benefits — to a well-prepared audience (no surprises)"]
+  }
+]

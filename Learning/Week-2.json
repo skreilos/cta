@@ -1,0 +1,176 @@
+[
+  {
+    "module": "Instance & Release Strategy",
+    "type": "mc",
+    "q": "How does IDR enable syncing specified data between ServiceNow instances?",
+    "options": [
+      "In either a unidirectional or bidirectional replication",
+      "Data is automatically replicated to one or more other instances",
+      "By configuring only a producer replication set",
+      "By activating the producer replication set"
+    ],
+    "correct": ["In either a unidirectional or bidirectional replication"],
+    "explanation": "One instance is configured as a producer to distribute data, others as consumer instances to receive data. Bidirectional replication enables data to flow from producer to consumer and back."
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "mc",
+    "q": "What are the IDR limitations that you should be aware of as a CTA? (Select all that apply)",
+    "options": [
+      "IDR is designed to replicate data, not clone instances",
+      "Initial seeding of the tables must be less than 3 million records per replication set",
+      "IDR does not move data on a pre-set schedule",
+      "IDR does not replicate metadata tables, configuration, and settings",
+      "IDR does not support integration or data export use cases outside of ServiceNow"
+    ],
+    "correct": [
+      "IDR is designed to replicate data, not clone instances",
+      "Initial seeding of the tables must be less than 3 million records per replication set",
+      "IDR does not move data on a pre-set schedule",
+      "IDR does not replicate metadata tables, configuration, and settings",
+      "IDR does not support integration or data export use cases outside of ServiceNow"
+    ],
+    "explanation": "IDR does not replicate metadata, is not a cloning replacement, has a 3M record seeding limit, syncs near real-time (no fixed schedule), and only works within ServiceNow."
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "mc",
+    "q": "What is the best approach for managing CMDB data when multiple instances exist?",
+    "options": [
+      "Each instance should have its own independent CMDB",
+      "Assign ownership of CMDB data to specific groups and designate a master source",
+      "Synchronize all CMDB data bi-directionally across all instances to maintain consistency",
+      "Use update sets to transfer CMDB data between instances"
+    ],
+    "correct": ["Assign ownership of CMDB data to specific groups and designate a master source"],
+    "explanation": "CMDB data should have clear ownership, with a designated master source and structured synchronization rules."
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "mc",
+    "q": "What code migration options are supported out of the box in ServiceNow? (Select all that apply)",
+    "options": [
+      "Update sets",
+      "Instance migration",
+      "Source control integration",
+      "Application repository"
+    ],
+    "correct": ["Update sets", "Source control integration", "Application repository"],
+    "explanation": "Update sets, source control integration, and application repository are OOTB supported. Instance migration is not a valid code migration option."
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "mc",
+    "q": "What is a staging instance used for in a 5-instance stack?",
+    "options": [
+      "End-user training without affecting the dev cycle",
+      "Pre-production testing, deployment validation, and troubleshooting before changes reach production",
+      "Storing archived production data",
+      "Testing upgrades and POCs in isolation"
+    ],
+    "correct": ["Pre-production testing, deployment validation, and troubleshooting before changes reach production"],
+    "explanation": "A staging instance sits between UAT and Production. It is used for deployment testing, troubleshooting issues before they reach prod, running pilots, and enabling increased parallel activity. Typical for complex multi-team environments."
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "what",
+    "q": "What factors determine the optimal number of instances in a ServiceNow instance stack?",
+    "a": ["Organization size and resource availability", "User and team involvement", "Process and integration scope", "Flexibility requirements", "Cost considerations"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "diff",
+    "q": "What is the difference between a 3-, 4-, and 5-instance stack?",
+    "a": ["3-instance (Dev→Test→Prod): small orgs, rapid go-live, minimal integrations — no staging", "4-instance (Dev→QA→UAT→Prod): ~70% of implementations — standard for medium/large orgs, UAT doubles as pre-prod training", "5-instance (Dev→QA→UAT→Staging→Prod): multiple teams, complex integrations, staging for deployment testing and troubleshooting"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "why",
+    "q": "Why should instance management policies be defined upfront?",
+    "a": ["Reduce risk: changes go through defined process and maintenance windows", "Reduce MTTR: clear support procedures and teams", "Prevent incidents/outages: especially for system property and plugin changes"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "what",
+    "q": "What are the 3 areas of separation in domain separation?",
+    "a": ["Data: domain-scoped visibility, partitioned by table", "Process: business logic overrideable per domain", "UI: menus, forms, dashboards overrideable per domain"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "why",
+    "q": "Why must domain separation be enabled before any development work?",
+    "a": "Once active it cannot be reversed — only disabled, with hard-to-reverse trickle-down effects. Extremely complex to add or disable post-implementation."
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "what",
+    "q": "What are valid reasons NOT to use domain separation?",
+    "a": ["Physical DB-level separation required by regulation (not just logical)", "Segregation needed only to resolve internal collaboration issues (use ACLs instead)", "Tenants want full ownership and administration of their own instance", "Tenants so large they require multiple nodes or dedicated hardware"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "what",
+    "q": "What alternatives exist for data segregation when domain separation is overkill?",
+    "a": ["Before query business rules: prevent access to certain records", "ACLs: limit data visibility among users/groups", "Filters, views and view rules: limit visible fields per user/group"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "what",
+    "q": "What are valid business reasons for using multiple production instances?",
+    "a": ["Data residency: country data must stay in-country", "Separation of internal vs. external data and access", "Different org units operating as separate companies", "International teams with fundamentally different operations"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "why",
+    "q": "Why should heavy integrations between instances be a warning sign for multi-instance architecture?",
+    "a": "High maintenance cost over time exceeds initial implementation cost. Heavy integration needs (CMDB sync, ticket sync) usually signal no real business reason for separate instances — a single instance would be better."
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "diff",
+    "q": "What is the difference between the three architectural models: deliberate customization, multiple instances, and domain separation?",
+    "a": ["Deliberate customization: extends OOTB apps, flexible, no extra licenses — but higher technical debt, limited SN support for custom code", "Multiple instances: physical data separation, each instance purpose-built — but separate licenses and high governance overhead", "Domain separation: OOTB on single instance, SN supports it — but complex, irreversible, possible extra cost"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "diff",
+    "q": "What is the difference between IDR seeding and IDR replication?",
+    "a": ["Seeding: one-time snapshot copy from producer to consumer — no automatic updates after transfer. Use for new instance setup or large dataset migration.", "Replication: continuous automated sync — monitors for changes and pushes them in real-time/near real-time. Use for business continuity and global instance consistency."]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "diff",
+    "q": "What are the 3 IDR complexity levels and when is each used?",
+    "a": ["Low: identical table structures, no transformation — foundation data (Users, Groups, Location) — unidirectional", "Medium: somewhat different tables, transformation needed — CMDB/Asset data — bidirectional", "High: very different tables, heavy transformation — ticket data (Incident, Request, Case) — via staging table with business rules"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "diff",
+    "q": "What is the difference between IDR and Service Bridge?",
+    "a": ["IDR: same-organization data replication between own instances", "Service Bridge: cross-instance request management across different organizations — preferred for cross-org request handling with customer/partner/vendor SN instances"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "what",
+    "q": "What is an update set and what does it contain?",
+    "a": ["Collection of configuration changes transferred between ServiceNow instances", "Contains: record details identifying the update set, list of configuration changes (scripts, UI policies, business rules), state defining retrieval/application eligibility", "Essentially an XML file"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "what",
+    "q": "What does the App Engine Management Center (AEMC) provide?",
+    "a": ["Manages the entire application lifecycle: design, development, testing, deployment, maintenance", "Visual deployment pipelines for governance and insight", "Automated testing (ATF) and Instance Scan integration", "RBAC for authorized deployment"]
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "why",
+    "q": "Why is the 4-instance stack used in ~70% of ServiceNow implementations?",
+    "a": "It balances testing separation (QA), user acceptance testing (UAT), and production readiness without the overhead of a staging instance. UAT can double as a pre-go-live training environment, making it cost-effective for most medium to large organizations."
+  },
+  {
+    "module": "Instance & Release Strategy",
+    "type": "what",
+    "q": "What are the 4 governance considerations for release and instance strategy?",
+    "a": ["Operating model: delegated dev, SI partners, DevOps/separation of duties", "Platform scope: apps deployed, foundation data, regression testing, integrations, user communities", "Instance structure: number/purpose of environments, capabilities, multi-dev merge, cloning", "Deployment methodology: Waterfall/Agile/SAFe, release cadence, tooling strategy"]
+  }
+]

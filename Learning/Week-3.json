@@ -1,0 +1,138 @@
+[
+  {
+    "module": "Technical Governance",
+    "type": "mc",
+    "q": "Governance is a decision-making framework that accelerates outcomes by defining which of the following? (Select all that apply)",
+    "options": [
+      "What decisions need to be made and when",
+      "Who is involved in decision-making",
+      "How the work gets done",
+      "How decisions are made"
+    ],
+    "correct": ["What decisions need to be made and when", "Who is involved in decision-making", "How decisions are made"],
+    "explanation": "Governance defines what decisions need to be made and when, who is involved, and how decisions are made. 'How the work gets done' belongs to the operating model, not governance."
+  },
+  {
+    "module": "Technical Governance",
+    "type": "mc",
+    "q": "Which of the following are key components of the ServiceNow governance framework? (Select all that apply)",
+    "options": [
+      "Technical governance board",
+      "Executive steering board",
+      "Demand board",
+      "Portfolio governance board",
+      "Operational oversight board",
+      "Governance coordination forum"
+    ],
+    "correct": ["Technical governance board", "Executive steering board", "Demand board"],
+    "explanation": "The ServiceNow governance framework has exactly three boards: Executive Steering Board (strategy), Demand Board (portfolio), and Technical Governance Board (technical). The other options are not part of this framework."
+  },
+  {
+    "module": "Technical Governance",
+    "type": "mc",
+    "q": "Which of the following are best practices when developing applications in ServiceNow? (Select all that apply)",
+    "options": [
+      "Customize out-of-the-box scripts to match business needs",
+      "Follow a consistent naming convention across all artifacts",
+      "Use global scope for all applications to ensure broad access",
+      "Use established and officially supported patterns when working with ServiceNow"
+    ],
+    "correct": ["Follow a consistent naming convention across all artifacts", "Use established and officially supported patterns when working with ServiceNow"],
+    "explanation": "Consistent naming conventions and officially supported patterns are best practices. Customizing OOTB scripts increases technical debt and upgrade risk. Global scope should be avoided in favor of scoped applications."
+  },
+  {
+    "module": "Technical Governance",
+    "type": "mc",
+    "q": "Which of the following are best practice approaches for achieving continuous improvement in governance? (Select all that apply)",
+    "options": [
+      "Analyze metrics to continuously drive process improvement and remove bottlenecks",
+      "Define metrics that measure the effectiveness of your governance process",
+      "Triage decisions that require the attention of governance boards and push all but the most important to your front lines",
+      "Conduct a thorough review of product documentation and release notes to identify governance policies"
+    ],
+    "correct": [
+      "Analyze metrics to continuously drive process improvement and remove bottlenecks",
+      "Define metrics that measure the effectiveness of your governance process",
+      "Triage decisions that require the attention of governance boards and push all but the most important to your front lines"
+    ],
+    "explanation": "Continuous governance improvement focuses on defining metrics, removing bottlenecks, and triaging decisions. Reviewing product documentation is useful but is not one of the three core CI approaches."
+  },
+  {
+    "module": "Technical Governance",
+    "type": "diff",
+    "q": "What is the difference between governance and an operating model?",
+    "a": ["Governance: decision-making framework — defines how ServiceNow strategy, portfolio, and technical decisions are made, and who has authority", "Operating model: basic framework for how products and services reach consumers — governance is foundational within it, but not the same thing"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "why",
+    "q": "Why should organizations invest in governance?",
+    "a": ["Drives transformation vision: aligns investments with strategic goals, ensures appropriate resource allocation", "Delivers the right work at the right time: clear roles reduce roadblocks, enable faster decision-making", "Maintains implementation integrity: provides guidelines, standards, and leading practices — data handled appropriately, systems secure, services reliable"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "what",
+    "q": "What are the 3 governance boards in the ServiceNow framework and what does each address?",
+    "a": ["Executive Steering Board: strategic decisions — vision, budget, final roadmap (senior IT + business leaders)", "Demand Board: portfolio decisions — scoping work, roadmap aligned with ESB vision (platform + process owners)", "Technical Governance Board: technical decisions — standards and guardrails for platform development (IT leaders + architects)"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "what",
+    "q": "What are the 6 key players in a ServiceNow governance program?",
+    "a": ["Executive Sponsor: chairs ESC, sets vision, secures funding", "Platform Owner: strategic roadmap, governance policies, may chair TGB", "Platform Architect: best practices for data modelling/integrations/configs, may chair TGB", "Demand Manager: chairs demand board, demand prioritization", "Process Owner: defines process best practices, approves process changes", "Developer/Admin: impact assessment, documentation, change control"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "what",
+    "q": "What are the 4 technical governance domains the TGB oversees (DEAP)?",
+    "a": ["Data Management: ownership, quality, security, integrations", "Environment Management: instance structure, environment policies", "App Development Management: customization guidelines, naming conventions, coding standards", "Platform Management: access policies, upgrade management, performance monitoring"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "why",
+    "q": "Why should custom development only be used when configuration cannot meet business needs?",
+    "a": "Customization increases technical debt and reduces upgradeability. The key decision question: does the business value of customization outweigh the risk in terms of technical debt and upgrade complexity? Configuration is always preferred."
+  },
+  {
+    "module": "Technical Governance",
+    "type": "what",
+    "q": "What is the ServiceNow leading practice for upgrade frequency?",
+    "a": "Upgrade at least once per year. Many customers aim to upgrade with each new release to stay current, maintain SN support, and access new OOTB functionality."
+  },
+  {
+    "module": "Technical Governance",
+    "type": "diff",
+    "q": "What is the difference between a lagging and a leading governance indicator?",
+    "a": ["Lagging indicator: success against top-level program KPIs (e.g. did implementation deliver on expectations?) — hard to directly attribute to governance", "Leading indicator: measures effectiveness of governance processes and policies over time (e.g. # of board decisions per quarter, % policy updates, escalation reduction)"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "what",
+    "q": "What is the CTA's role in relation to the Technical Governance Board?",
+    "a": ["Help outline the board's charter, scope, roles, and responsibilities", "Provide expertise on platform architecture, scalability, and maintainability", "Help define coding standards, development guidelines, and security policies", "Align governance with latest ServiceNow platform capabilities", "Identify strategies for addressing technical debt, legacy issues, and inefficiencies"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "what",
+    "q": "What are the two ServiceNow tools for platform health and what does each do?",
+    "a": ["ITOM Health: AI-driven monitoring, event correlation, and log analytics — proactively detects, diagnoses, and resolves IT infrastructure issues; Health Log Analytics predicts issues before they impact users", "Instance Scan: interrogates instance for configurations indicating health issues and best practice violations — used in dev operations, release management, and pre/post upgrades"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "why",
+    "q": "Why is the right amount of governance important — what happens with too little or too much?",
+    "a": ["Too little: similar indecision as having no governance, opens implementation to risks", "Too much (bureaucratic): impedes responsiveness, blocks entrepreneurial thinking, creates 'red tape' that slows work unnecessarily", "Goal: continuously review process and track metrics to find the right balance"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "what",
+    "q": "What are the key governance golden rules recommended by ServiceNow?",
+    "a": ["Out-of-the-box first: adjust business before adjusting platform", "Single system of record: only maintain CIs/attributes with actual consumption requirements", "Outcomes over features: focus on business outcomes, not legacy features", "80/20 rule: deliver 80% of immediate need, do not configure for edge cases", "Upgrades: stay current within X months of each release", "Integrations: only those needed for value; bespoke builds last resort"]
+  },
+  {
+    "module": "Technical Governance",
+    "type": "what",
+    "q": "What upgrade management policy areas should be defined for a ServiceNow platform?",
+    "a": ["Process: upgrade flow, who is involved, when each environment is upgraded, skipped items remediation", "Approvals: what approvals before/during/after upgrade", "Testing: what testing before and after the upgrade", "Scheduling: maintenance windows and blackout windows", "Communications: before/during/after upgrade", "Support: issue handling during upgrades, when to engage SN Support"]
+  }
+]

@@ -1,0 +1,131 @@
+[
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Was ist das Hauptziel des CTA-Programms (Certified Technical Architect)?",
+    "answer": "Das CTA-Programm entwickelt die Fähigkeit, komplexe geschäftliche Herausforderungen mit der ServiceNow-Plattform zu lösen, während man Expertise in technischen Governance-Prozessen für robuste Plattformlösungen aufbaut.",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Welche vier Hauptdomänen von technischen Architektur-Implementierungen werden im CTA-Programm behandelt?",
+    "answer": "Die vier Hauptdomänen sind: 1) Instance & Release Strategy, 2) Technical Governance, 3) Security Architecture, 4) Integrations",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Was ist Instance Data Replication (IDR) und welcher Vorteil bietet es?",
+    "answer": "IDR ist ein ServiceNow-Feature, das Datenkonsistenz über mehrere Instanzen hinweg sicherstellt und hilft, verschiedene Code-Migrations-Methoden bei der Entwicklung einer effektiven ServiceNow-Release-Strategie zu evaluieren.",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Nenne drei wichtige Verantwortungsbereiche im Shared Security Model von ServiceNow.",
+    "answer": "Die drei Schichten der Platform Security sind: 1) Infrastructure Security, 2) Platform Security, 3) Application Security. Jede Schicht hat spezifische Sicherheitsoptionen.",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Was sind die Schlüsselprinzipien des User Experience (UX) Design, die im CTA-Programm behandelt werden?",
+    "answer": "Die Schlüsselprinzipien sind: Empathie, Validierung und Wiederverwendung (Reuse). Diese werden angewendet, um benutzerfreundliche Erfahrungen zu gestalten.",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Was ist der Unterschied zwischen Artificial Intelligence (AI) und Generative AI (GenAI) im ServiceNow-Kontext?",
+    "answer": "AI bezieht sich auf allgemeine intelligente Automatisierung, während GenAI speziell ServiceNows Generative-AI-Fähigkeiten umfasst, einschließlich Now Assist und Large Language Models (LLMs).",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Welche sechs Schritte sind im Playbook Process Definition Runtime definiert?",
+    "answer": "Die sechs Schritte sind die Komponenten des Playbook-Prozesses in Workflow Studio, die zeigen, wie Playbooks zur Automatisierung und Optimierung von Workflows eingesetzt werden.",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Was sind die drei Säulen des CMDB/CSDM Datenmodellierungsprozesses?",
+    "answer": "Die drei Säulen des CMDB-Managements sind Anwendungen, Services und Funktionen. Sie unterstützen die Verwaltung der Konfigurationen und der Core Tools.",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Nenne drei wichtige Aspekte der Rapid Application Development (RAD) und CI/CD im CTA-Programm.",
+    "answer": "1) RAD und CI/CD Grundprinzipien definieren, 2) Automation Sprawl minimieren, 3) Unique Governance und Compliance-Herausforderungen in rapid development adressieren",
+    "date": "2026-03-18",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "CTA syllabus.pdf",
+    "question": "Was sind die Hauptaufgaben bei der Go-Live-Vorbereitung nach dem CTA-Lehrplan?",
+    "answer": "Die Hauptaufgaben sind: 1) Prozesse und Best Practices vor dem Go-Live beschreiben, 2) Organisatorischen Wandel, Problem- und Risikomanagement durchführen, 3) Kommunikation planen und Post-Go-Live Support bieten",
+    "date": "2026-03-18",
+    "status": "open"
+  }
+  ,
+  {
+    "modul": "01-Grundlagen",
+    "source": "Week_1_Quiz",
+    "question": "When presenting ServiceNow solutions to customers, how does understanding their desired outcomes improve the effectiveness of platform value articulation?",
+    "answer": "It allows CTAs to tailor messages to address specific pain points and demonstrate measurable benefits to the customer.",
+    "date": "2026-03-30",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "Week_1_Quiz",
+    "question": "What is the primary purpose of Now Create when articulating the value of the ServiceNow platform?",
+    "answer": "A prescriptive methodology offering on-demand guidance through project-specific Success Packs, blueprints, best practices, and project recommendations. (Not a document repository — that is the Resource Center.)",
+    "date": "2026-03-30",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "Week_1_Quiz",
+    "question": "A CTA needs to present integration benefits to process users (service desk agents, business users). Which approach best addresses their needs?",
+    "answer": "Highlight how the integrations simplify daily tasks, reduce manual effort, improve workflows, and provide self-service options — while addressing required training. (Not ROI/strategy = executives; not APIs = developers; not scalability = IT leaders.)",
+    "date": "2026-03-30",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "Week_1_Quiz",
+    "question": "Which domain of ServiceNow's technical architecture defines the structure and processes that support development, testing, and release workflows while establishing security controls for different personas?",
+    "answer": "Environment Management — covers structured dev/test/release workflows + per-instance security controls and user access based on personas. (Not App Development Management, which covers development standards and leading practices.)",
+    "date": "2026-03-30",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "Week_1_Quiz",
+    "question": "What is the initial step in the process of architectural assessment?",
+    "answer": "Identify stakeholders and gather information. Without this foundation, gaps, heatmaps, and to-be architecture lack factual basis.",
+    "date": "2026-03-30",
+    "status": "open"
+  },
+  {
+    "modul": "01-Grundlagen",
+    "source": "Week_1_Quiz",
+    "question": "After completing stakeholder interviews, which single action best reflects a clear and effective way to prepare and share findings with project leadership?",
+    "answer": "Prepare a structured, visual report that summarizes key insights, identified gaps, and recommended next steps for the project leadership.",
+    "date": "2026-03-30",
+    "status": "open"
+  }
+]

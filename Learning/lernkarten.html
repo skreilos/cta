@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Lernkarten</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #032D42;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  h1 { font-size: 1.4rem; font-weight: 600; color: #62d84e; margin-bottom: 0.3rem; }
+  .subtitle { font-size: 0.85rem; color: #8ab4c2; margin-bottom: 1.2rem; }
+
+  /* Week filter */
+  .week-filter {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    width: 100%; max-width: 640px; margin-bottom: 1.2rem;
+  }
+  .week-check-label {
+    display: flex; align-items: center; gap: 0.35rem;
+    padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.78rem;
+    font-weight: 600; cursor: pointer; border: 1px solid #1a6a8b;
+    background: #0a4a6b; color: #8ab4c2; transition: all 0.15s; user-select: none;
+  }
+  .week-check-label:has(input:checked) { background: #62d84e; color: #032D42; border-color: #62d84e; }
+  .week-check-label input[type="checkbox"] { accent-color: #032D42; width: 13px; height: 13px; cursor: pointer; }
+  .week-check-label.all-label { border-color: #8ab4c2; }
+
+  .progress-bar-wrap {
+    width: 100%; max-width: 640px;
+    background: #0a4a6b; border-radius: 8px; height: 6px; margin-bottom: 0.5rem;
+  }
+  .progress-bar { height: 6px; background: #62d84e; border-radius: 8px; transition: width 0.4s ease; }
+
+  .progress-text {
+    font-size: 0.8rem; color: #8ab4c2; margin-bottom: 0.4rem;
+    text-align: right; width: 100%; max-width: 640px;
+  }
+
+  .repeat-badge {
+    width: 100%; max-width: 640px;
+    font-size: 0.78rem; color: #ffb347; margin-bottom: 1rem;
+    min-height: 1.2rem;
+  }
+
+  .score-bar { display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; }
+  .score-bar span { padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600; }
+  .score-correct { background: #1a4a1a; color: #62d84e; }
+  .score-wrong { background: #4a1a1a; color: #ff6b6b; }
+
+  .card-wrap {
+    width: 100%; max-width: 640px;
+    perspective: 1200px; cursor: pointer; margin-bottom: 1.5rem;
+  }
+
+  .card-inner {
+    width: 100%; min-height: 240px;
+    position: relative; transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-inner.flipped { transform: rotateY(180deg); }
+
+  .card-front, .card-back {
+    position: absolute; width: 100%; min-height: 240px;
+    backface-visibility: hidden; border-radius: 16px;
+    padding: 2rem; display: flex; flex-direction: column; justify-content: center;
+  }
+  .card-front { background: #0a4a6b; border: 1px solid #1a6a8b; }
+  .card-back  { background: #0d3d1f; border: 1px solid #1a6b2a; transform: rotateY(180deg); }
+
+  .card-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 0.8rem; opacity: 0.6; color: #62d84e;
+  }
+  .module-badge {
+    display: inline-block; background: rgba(98,216,78,0.12); color: #62d84e;
+    font-size: 0.7rem; padding: 0.2rem 0.7rem; border-radius: 10px;
+    margin-bottom: 0.9rem; font-weight: 600;
+  }
+  .week-tag {
+    display: inline-block; background: rgba(138,180,194,0.15); color: #8ab4c2;
+    font-size: 0.68rem; padding: 0.15rem 0.55rem; border-radius: 8px;
+    margin-left: 0.4rem; font-weight: 600; vertical-align: middle;
+  }
+  .card-type-badge {
+    display: inline-block; font-size: 0.68rem; padding: 0.15rem 0.55rem;
+    border-radius: 8px; margin-left: 0.4rem; font-weight: 600; vertical-align: middle;
+  }
+  .type-why   { background: #2a1a4a; color: #c084fc; }
+  .type-diff  { background: #1a2a4a; color: #60a5fa; }
+  .type-what  { background: #1a3a2a; color: #62d84e; }
+  .type-how   { background: #3a2a1a; color: #fb923c; }
+
+  .card-text { font-size: 1.1rem; line-height: 1.6; font-weight: 500; }
+  .card-back .card-text { font-size: 0.95rem; font-weight: 400; }
+  .card-back ul { margin-top: 0.5rem; padding-left: 1.2rem; }
+  .card-back ul li { margin-bottom: 0.3rem; line-height: 1.5; font-size: 0.92rem; }
+  .card-hint { margin-top: 1.5rem; font-size: 0.75rem; color: #62d84e; opacity: 0.4; text-align: center; }
+
+  .buttons { display: flex; gap: 1rem; width: 100%; max-width: 640px; margin-bottom: 1rem; }
+  .btn {
+    flex: 1; padding: 0.85rem; border: none; border-radius: 12px;
+    font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s; opacity: 0; pointer-events: none;
+  }
+  .btn.visible { opacity: 1; pointer-events: all; }
+  .btn:active { transform: scale(0.97); }
+  .btn-correct { background: #62d84e; color: #032D42; }
+  .btn-wrong   { background: #ff6b6b; color: #fff; }
+
+  .btn-next {
+    display: none; width: 100%; max-width: 640px;
+    padding: 0.85rem; background: #1a6a8b; color: #fff;
+    border: none; border-radius: 12px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; margin-bottom: 1rem; transition: background 0.2s;
+  }
+  .btn-next:hover { background: #2a8ab0; }
+
+  .result {
+    display: none; text-align: center; max-width: 640px; width: 100%;
+    background: #0a4a6b; border-radius: 16px; padding: 2.5rem 2rem; border: 1px solid #1a6a8b;
+  }
+  .result h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #62d84e; }
+  .result .big-score { font-size: 3rem; font-weight: 700; margin: 1rem 0; }
+  .result p { color: #8ab4c2; margin-bottom: 0.5rem; }
+  .result .repeat-info { font-size: 0.85rem; color: #ffb347; margin-bottom: 1.5rem; }
+  .btn-restart {
+    background: #62d84e; color: #032D42; border: none;
+    padding: 0.85rem 2rem; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer;
+  }
+
+  .loading { color: #8ab4c2; font-size: 0.9rem; margin: 2rem 0; }
+  .no-cards { color: #ff6b6b; font-size: 0.9rem; margin: 2rem 0; }
+</style>
+</head>
+<body>
+
+<h1>ServiceNow CTA</h1>
+<p class="subtitle" id="subtitle">Lernkarten werden geladen...</p>
+
+<div class="week-filter" id="weekFilter"></div>
+
+<div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
+<div class="progress-text" id="progressText"></div>
+<div class="repeat-badge" id="repeatBadge"></div>
+
+<div class="score-bar">
+  <span class="score-correct" id="scoreCorrect">Richtig: 0</span>
+  <span class="score-wrong" id="scoreWrong">Falsch: 0</span>
+</div>
+
+<div class="card-wrap" id="cardWrap" onclick="flipCard()">
+  <div class="card-inner" id="cardInner">
+    <div class="card-front">
+      <div class="card-label">Frage</div>
+      <div>
+        <span class="module-badge" id="cardModule"></span>
+        <span class="card-type-badge" id="cardTypeBadge"></span>
+        <span class="week-tag" id="cardWeekTag"></span>
+      </div>
+      <div class="card-text" id="cardQuestion"></div>
+      <div class="card-hint">Klicken zum Aufdecken</div>
+    </div>
+    <div class="card-back">
+      <div class="card-label">Antwort</div>
+      <div class="card-text" id="cardAnswer"></div>
+    </div>
+  </div>
+</div>
+
+<div class="buttons">
+  <button class="btn btn-wrong"   id="btnWrong"   onclick="answer(false)">Nochmal</button>
+  <button class="btn btn-correct" id="btnCorrect" onclick="answer(true)">Gewusst</button>
+</div>
+<button class="btn-next" id="btnNext" onclick="nextCard()">Weiter</button>
+
+<div class="result" id="result">
+  <h2>Fertig!</h2>
+  <div class="big-score" id="resultScore"></div>
+  <p id="resultMsg"></p>
+  <p class="repeat-info" id="repeatInfo"></p>
+  <button class="btn-restart" onclick="restart()">Nochmal</button>
+</div>
+
+<script>
+const WEEKS = ['Week-0','Week-1','Week-2','Week-3','Week-4','Week-5','Week-6','Week-7','Week-8','Week-9','Week-10','Week-11','Week-12'];
+
+const typeConfig = {
+  what: { label: "Was?",        cls: "type-what" },
+  why:  { label: "Warum?",      cls: "type-why"  },
+  diff: { label: "Unterschied", cls: "type-diff" },
+  how:  { label: "Wie?",        cls: "type-how"  }
+};
+
+let allCards = {};      // week -> cards[]
+let activeWeeks = new Set();
+let cards = [];
+
+let queue = [];
+let repeatQueue = [];
+let current = 0;
+let correct = 0;
+let wrong = 0;
+let flipped = false;
+let answered = false;
+
+// Load all available week JSONs
+async function loadAllWeeks() {
+  const results = await Promise.allSettled(
+    WEEKS.map(w =>
+      fetch(`${w}.json`)
+        .then(r => r.ok ? r.json().then(data => ({ week: w, data })) : null)
+    )
+  );
+
+  results.forEach(r => {
+    if (r.status === 'fulfilled' && r.value) {
+      const { week, data } = r.value;
+      allCards[week] = data.map(c => ({ ...c, week }));
+    }
+  });
+
+  buildWeekFilter();
+  buildDeck();
+}
+
+function buildWeekFilter() {
+  const container = document.getElementById('weekFilter');
+  container.innerHTML = '';
+
+  const available = WEEKS.filter(w => allCards[w] && allCards[w].length > 0);
+  if (available.length === 0) return;
+
+  // "Alle" checkbox
+  const allLabel = document.createElement('label');
+  allLabel.className = 'week-check-label all-label';
+  const allCb = document.createElement('input');
+  allCb.type = 'checkbox'; allCb.checked = true;
+  allCb.onchange = () => toggleAll(allCb.checked);
+  allLabel.appendChild(allCb);
+  allLabel.appendChild(document.createTextNode('Alle'));
+  container.appendChild(allLabel);
+
+  available.forEach(w => {
+    const label = document.createElement('label');
+    label.className = 'week-check-label';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = true; cb.dataset.week = w;
+    cb.onchange = () => onWeekToggle();
+    label.appendChild(cb);
+    label.appendChild(document.createTextNode(w));
+    container.appendChild(label);
+    activeWeeks.add(w);
+  });
+}
+
+function toggleAll(checked) {
+  document.querySelectorAll('[data-week]').forEach(cb => { cb.checked = checked; });
+  activeWeeks = new Set(checked ? WEEKS.filter(w => allCards[w]) : []);
+  buildDeck();
+  restart();
+}
+
+function onWeekToggle() {
+  activeWeeks = new Set();
+  document.querySelectorAll('[data-week]').forEach(cb => {
+    if (cb.checked) activeWeeks.add(cb.dataset.week);
+  });
+  // Sync "Alle" checkbox
+  const available = WEEKS.filter(w => allCards[w]);
+  const allCb = document.querySelector('.all-label input');
+  if (allCb) allCb.checked = activeWeeks.size === available.length;
+  buildDeck();
+  restart();
+}
+
+function buildDeck() {
+  const available = WEEKS.filter(w => allCards[w]);
+  if (available.length === 0) {
+    document.getElementById('subtitle').textContent = 'Keine Lernkarten gefunden.';
+    document.getElementById('cardWrap').style.display = 'none';
+    return;
+  }
+
+  const selected = available.filter(w => activeWeeks.has(w));
+  cards = selected.flatMap(w => allCards[w]);
+
+  const label = selected.length === available.length
+    ? `Alle Wochen — ${cards.length} Karten`
+    : `${selected.join(', ')} — ${cards.length} Karten`;
+  document.getElementById('subtitle').textContent = cards.length > 0 ? label : 'Keine Woche ausgewählt.';
+  document.getElementById('cardWrap').style.display = cards.length > 0 ? 'block' : 'none';
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function formatAnswer(a) {
+  if (Array.isArray(a)) return '<ul>' + a.map(x => `<li>${x}</li>`).join('') + '</ul>';
+  return a;
+}
+
+function loadCard() {
+  if (cards.length === 0) return;
+  const idx = queue[current];
+  const card = cards[idx];
+  const isRepeat = repeatQueue.includes(idx) && current >= (queue.length - repeatQueue.length);
+
+  document.getElementById('cardModule').textContent = card.module;
+  document.getElementById('cardWeekTag').textContent = card.week || '';
+
+  const t = typeConfig[card.type] || typeConfig.what;
+  const badge = document.getElementById('cardTypeBadge');
+  badge.textContent = t.label;
+  badge.className = 'card-type-badge ' + t.cls;
+
+  document.getElementById('cardQuestion').textContent = card.q;
+  document.getElementById('cardAnswer').innerHTML = formatAnswer(card.a);
+  document.getElementById('cardInner').classList.remove('flipped');
+  document.getElementById('btnCorrect').classList.remove('visible');
+  document.getElementById('btnWrong').classList.remove('visible');
+  document.getElementById('btnNext').style.display = 'none';
+  document.getElementById('repeatBadge').textContent = isRepeat ? '↩ Wiederholung — diese Karte hattest du falsch' : '';
+  flipped = false;
+  answered = false;
+  updateProgress();
+}
+
+function flipCard() {
+  if (answered) return;
+  flipped = !flipped;
+  document.getElementById('cardInner').classList.toggle('flipped', flipped);
+  if (flipped) {
+    document.getElementById('btnCorrect').classList.add('visible');
+    document.getElementById('btnWrong').classList.add('visible');
+  }
+}
+
+function answer(wasCorrect) {
+  if (answered) return;
+  answered = true;
+  if (wasCorrect) {
+    correct++;
+  } else {
+    wrong++;
+    const idx = queue[current];
+    if (!repeatQueue.includes(idx)) {
+      repeatQueue.push(idx);
+      queue.push(idx);
+    }
+  }
+  document.getElementById('scoreCorrect').textContent = `Richtig: ${correct}`;
+  document.getElementById('scoreWrong').textContent = `Falsch: ${wrong}`;
+  document.getElementById('btnCorrect').classList.remove('visible');
+  document.getElementById('btnWrong').classList.remove('visible');
+  document.getElementById('btnNext').style.display = 'block';
+  document.getElementById('btnNext').textContent = current + 1 < queue.length ? 'Weiter' : 'Ergebnis';
+}
+
+function nextCard() {
+  current++;
+  if (current >= queue.length) {
+    showResult();
+  } else {
+    loadCard();
+  }
+}
+
+function updateProgress() {
+  const total = queue.length;
+  const pct = (current / total * 100).toFixed(0);
+  document.getElementById('progressBar').style.width = pct + '%';
+  const repeats = repeatQueue.length;
+  document.getElementById('progressText').textContent =
+    `${current + 1} / ${total}` + (repeats > 0 ? ` (+${repeats} Wiederholung${repeats > 1 ? 'en' : ''})` : '');
+}
+
+function showResult() {
+  document.getElementById('cardWrap').style.display = 'none';
+  document.querySelector('.buttons').style.display = 'none';
+  document.getElementById('btnNext').style.display = 'none';
+  document.getElementById('progressBar').style.width = '100%';
+  document.getElementById('repeatBadge').textContent = '';
+  const pct = Math.round(correct / queue.length * 100);
+  document.getElementById('resultScore').textContent = pct + '%';
+  document.getElementById('resultMsg').textContent =
+    pct >= 85 ? `${correct} von ${queue.length} richtig — hervorragend!` :
+    pct >= 65 ? `${correct} von ${queue.length} richtig — gut, weiter üben!` :
+    `${correct} von ${queue.length} richtig — nochmal wiederholen.`;
+  document.getElementById('repeatInfo').textContent =
+    repeatQueue.length > 0
+      ? `${repeatQueue.length} Karte${repeatQueue.length > 1 ? 'n' : ''} wurden wiederholt.`
+      : 'Alle Karten auf Anhieb richtig!';
+  document.getElementById('result').style.display = 'block';
+}
+
+function restart() {
+  current = 0; correct = 0; wrong = 0;
+  repeatQueue = [];
+  document.getElementById('scoreCorrect').textContent = 'Richtig: 0';
+  document.getElementById('scoreWrong').textContent = 'Falsch: 0';
+  document.getElementById('cardWrap').style.display = 'block';
+  document.querySelector('.buttons').style.display = 'flex';
+  document.getElementById('result').style.display = 'none';
+  queue = shuffle(Array.from({ length: cards.length }, (_, i) => i));
+  if (cards.length > 0) loadCard();
+}
+
+// Init
+loadAllWeeks().then(() => {
+  queue = shuffle(Array.from({ length: cards.length }, (_, i) => i));
+  if (cards.length > 0) loadCard();
+});
+</script>
+</body>
+</html>
