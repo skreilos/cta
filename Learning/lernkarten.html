@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,425 +7,596 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root[data-theme="dark"] {
+    --bg:            #032D42;
+    --surface:       #0a4a6b;
+    --surface2:      #0d3d1f;
+    --border:        #1a6a8b;
+    --border2:       #1a6b2a;
+    --text:          #ffffff;
+    --text-muted:    #8ab4c2;
+    --accent:        #62d84e;
+    --accent-on:     #032D42;
+    --btn-blue:      #1a6a8b;
+    --btn-blue-hov:  #2a8ab0;
+    --ok-bg:         #1a4a1a;  --ok-txt:  #62d84e;
+    --no-bg:         #4a1a1a;  --no-txt:  #ff6b6b;
+    --repeat:        #ffb347;
+    --wrong-btn:     #ff6b6b;  --wrong-on: #fff;
+    --why-bg: #2a1a4a; --why-txt: #c084fc;
+    --diff-bg:#1a2a4a; --diff-txt:#60a5fa;
+    --what-bg:#1a3a2a; --what-txt:#62d84e;
+    --how-bg: #3a2a1a; --how-txt: #fb923c;
+    --mc-bg:  #2a2a1a; --mc-txt:  #fde047;
+  }
+
+  :root[data-theme="light"] {
+    --bg:            #f0f4f8;
+    --surface:       #ffffff;
+    --surface2:      #f0faf0;
+    --border:        #ccd9e0;
+    --border2:       #b6ddb6;
+    --text:          #0f2030;
+    --text-muted:    #4a6a7a;
+    --accent:        #1a8a10;
+    --accent-on:     #ffffff;
+    --btn-blue:      #1a6a8b;
+    --btn-blue-hov:  #0f4f6b;
+    --ok-bg:         #d4f5d4;  --ok-txt:  #1a5a1a;
+    --no-bg:         #ffd4d4;  --no-txt:  #8a1a1a;
+    --repeat:        #c05a00;
+    --wrong-btn:     #e03a3a;  --wrong-on: #fff;
+    --why-bg: #ede5ff; --why-txt: #5b21b6;
+    --diff-bg:#dbeafe; --diff-txt:#1d4ed8;
+    --what-bg:#dcfce7; --what-txt:#15803d;
+    --how-bg: #ffedd5; --how-txt: #c2410c;
+    --mc-bg:  #fef9c3; --mc-txt:  #854d0e;
+  }
+
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #032D42;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 1rem;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; padding: 2rem 1rem;
+    transition: background 0.2s, color 0.2s;
   }
 
-  h1 { font-size: 1.4rem; font-weight: 600; color: #62d84e; margin-bottom: 0.3rem; }
-  .subtitle { font-size: 0.85rem; color: #8ab4c2; margin-bottom: 1.2rem; }
-
-  /* Week filter */
-  .week-filter {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-    width: 100%; max-width: 640px; margin-bottom: 1.2rem;
+  .header-row {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; max-width: 640px; margin-bottom: 0.3rem;
   }
-  .week-check-label {
+  h1 { font-size: 1.4rem; font-weight: 600; color: var(--accent); }
+
+  .theme-btn {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 0.3rem 0.8rem;
+    cursor: pointer; font-size: 0.85rem; color: var(--text-muted);
+    font-weight: 600; transition: all 0.15s;
+  }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem; width: 100%; max-width: 640px; }
+
+  .week-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; width: 100%; max-width: 640px; margin-bottom: 1.2rem; }
+  .wk-label {
     display: flex; align-items: center; gap: 0.35rem;
     padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.78rem;
-    font-weight: 600; cursor: pointer; border: 1px solid #1a6a8b;
-    background: #0a4a6b; color: #8ab4c2; transition: all 0.15s; user-select: none;
+    font-weight: 600; cursor: pointer; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text-muted); transition: all 0.15s; user-select: none;
   }
-  .week-check-label:has(input:checked) { background: #62d84e; color: #032D42; border-color: #62d84e; }
-  .week-check-label input[type="checkbox"] { accent-color: #032D42; width: 13px; height: 13px; cursor: pointer; }
-  .week-check-label.all-label { border-color: #8ab4c2; }
+  .wk-label:has(input:checked) { background: var(--accent); color: var(--accent-on); border-color: var(--accent); }
+  .wk-label input[type="checkbox"] { width: 13px; height: 13px; cursor: pointer; }
+  .wk-all { border-color: var(--text-muted); }
 
-  .progress-bar-wrap {
-    width: 100%; max-width: 640px;
-    background: #0a4a6b; border-radius: 8px; height: 6px; margin-bottom: 0.5rem;
-  }
-  .progress-bar { height: 6px; background: #62d84e; border-radius: 8px; transition: width 0.4s ease; }
-
-  .progress-text {
-    font-size: 0.8rem; color: #8ab4c2; margin-bottom: 0.4rem;
-    text-align: right; width: 100%; max-width: 640px;
-  }
-
-  .repeat-badge {
-    width: 100%; max-width: 640px;
-    font-size: 0.78rem; color: #ffb347; margin-bottom: 1rem;
-    min-height: 1.2rem;
-  }
+  .prog-wrap { width: 100%; max-width: 640px; background: var(--surface); border-radius: 8px; height: 6px; margin-bottom: 0.5rem; }
+  .prog-bar { height: 6px; background: var(--accent); border-radius: 8px; transition: width 0.4s ease; }
+  .prog-text { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem; text-align: right; width: 100%; max-width: 640px; }
+  .repeat-badge { width: 100%; max-width: 640px; font-size: 0.78rem; color: var(--repeat); margin-bottom: 1rem; min-height: 1.2rem; }
 
   .score-bar { display: flex; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; }
   .score-bar span { padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 600; }
-  .score-correct { background: #1a4a1a; color: #62d84e; }
-  .score-wrong { background: #4a1a1a; color: #ff6b6b; }
+  .s-ok { background: var(--ok-bg); color: var(--ok-txt); }
+  .s-no { background: var(--no-bg); color: var(--no-txt); }
 
-  .card-wrap {
-    width: 100%; max-width: 640px;
-    perspective: 1200px; cursor: pointer; margin-bottom: 1.5rem;
-  }
-
+  .card-wrap { width: 100%; max-width: 640px; perspective: 1200px; cursor: pointer; margin-bottom: 1.5rem; }
   .card-inner {
-    width: 100%; min-height: 240px;
-    position: relative; transform-style: preserve-3d;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%; min-height: 240px; position: relative;
+    transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
   }
   .card-inner.flipped { transform: rotateY(180deg); }
 
   .card-front, .card-back {
-    position: absolute; width: 100%; min-height: 240px;
+    position: absolute; width: 100%; min-height: 240px; box-sizing: border-box;
     backface-visibility: hidden; border-radius: 16px;
-    padding: 2rem; display: flex; flex-direction: column; justify-content: center;
+    padding: 2rem; display: flex; flex-direction: column; justify-content: flex-start;
   }
-  .card-front { background: #0a4a6b; border: 1px solid #1a6a8b; }
-  .card-back  { background: #0d3d1f; border: 1px solid #1a6b2a; transform: rotateY(180deg); }
+  .card-front { background: var(--surface);  border: 1px solid var(--border);  }
+  .card-back  { background: var(--surface2); border: 1px solid var(--border2); transform: rotateY(180deg); }
 
-  .card-label {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; margin-bottom: 0.8rem; opacity: 0.6; color: #62d84e;
-  }
-  .module-badge {
-    display: inline-block; background: rgba(98,216,78,0.12); color: #62d84e;
-    font-size: 0.7rem; padding: 0.2rem 0.7rem; border-radius: 10px;
-    margin-bottom: 0.9rem; font-weight: 600;
-  }
-  .week-tag {
-    display: inline-block; background: rgba(138,180,194,0.15); color: #8ab4c2;
-    font-size: 0.68rem; padding: 0.15rem 0.55rem; border-radius: 8px;
-    margin-left: 0.4rem; font-weight: 600; vertical-align: middle;
-  }
-  .card-type-badge {
-    display: inline-block; font-size: 0.68rem; padding: 0.15rem 0.55rem;
-    border-radius: 8px; margin-left: 0.4rem; font-weight: 600; vertical-align: middle;
-  }
-  .type-why   { background: #2a1a4a; color: #c084fc; }
-  .type-diff  { background: #1a2a4a; color: #60a5fa; }
-  .type-what  { background: #1a3a2a; color: #62d84e; }
-  .type-how   { background: #3a2a1a; color: #fb923c; }
+  .card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.8rem; opacity: 0.6; color: var(--accent); }
+  .mod-badge { display: inline-block; background: rgba(98,216,78,0.12); color: var(--accent); font-size: 0.7rem; padding: 0.2rem 0.7rem; border-radius: 10px; margin-bottom: 0.9rem; font-weight: 600; }
+  .wk-tag { display: inline-block; background: rgba(138,180,194,0.15); color: var(--text-muted); font-size: 0.68rem; padding: 0.15rem 0.55rem; border-radius: 8px; margin-left: 0.4rem; font-weight: 600; vertical-align: middle; }
+  .type-badge { display: inline-block; font-size: 0.68rem; padding: 0.15rem 0.55rem; border-radius: 8px; margin-left: 0.4rem; font-weight: 600; vertical-align: middle; }
+  .t-why  { background: var(--why-bg);  color: var(--why-txt);  }
+  .t-diff { background: var(--diff-bg); color: var(--diff-txt); }
+  .t-what { background: var(--what-bg); color: var(--what-txt); }
+  .t-how  { background: var(--how-bg);  color: var(--how-txt);  }
+  .t-mc   { background: var(--mc-bg);   color: var(--mc-txt);   }
 
-  .card-text { font-size: 1.1rem; line-height: 1.6; font-weight: 500; }
+  .card-text { font-size: 1.1rem; line-height: 1.6; font-weight: 500; color: var(--text); }
   .card-back .card-text { font-size: 0.95rem; font-weight: 400; }
   .card-back ul { margin-top: 0.5rem; padding-left: 1.2rem; }
   .card-back ul li { margin-bottom: 0.3rem; line-height: 1.5; font-size: 0.92rem; }
-  .card-hint { margin-top: 1.5rem; font-size: 0.75rem; color: #62d84e; opacity: 0.4; text-align: center; }
+  .card-hint { margin-top: 1.5rem; font-size: 0.75rem; color: var(--accent); opacity: 0.4; text-align: center; }
 
-  .buttons { display: flex; gap: 1rem; width: 100%; max-width: 640px; margin-bottom: 1rem; }
-  .btn {
-    flex: 1; padding: 0.85rem; border: none; border-radius: 12px;
-    font-size: 1rem; font-weight: 600; cursor: pointer;
-    transition: transform 0.1s, opacity 0.2s; opacity: 0; pointer-events: none;
+  .mc-options { margin-top: 1rem; display: none; flex-direction: column; gap: 0.5rem; }
+  .mc-opt {
+    padding: 0.6rem 1rem; border-radius: 10px; font-size: 0.9rem; cursor: pointer;
+    border: 1px solid var(--border); background: var(--bg); color: var(--text);
+    text-align: left; font-family: inherit; transition: background 0.15s, border-color 0.15s;
   }
-  .btn.visible { opacity: 1; pointer-events: all; }
-  .btn:active { transform: scale(0.97); }
-  .btn-correct { background: #62d84e; color: #032D42; }
-  .btn-wrong   { background: #ff6b6b; color: #fff; }
-
-  .btn-next {
+  .mc-opt:hover:not(:disabled) { border-color: var(--accent); }
+  .mc-opt.selected    { background: var(--surface2); border-color: var(--accent); color: var(--text); font-weight: 600; }
+  .mc-opt.correct-ans { background: var(--ok-bg); border-color: var(--ok-txt); color: var(--ok-txt); font-weight: 600; }
+  .mc-opt.wrong-ans   { background: var(--no-bg); border-color: var(--no-txt); color: var(--no-txt); }
+  .mc-opt:disabled { cursor: default; }
+  .btn-mc-check {
     display: none; width: 100%; max-width: 640px;
-    padding: 0.85rem; background: #1a6a8b; color: #fff;
+    padding: 0.85rem; background: var(--surface); color: var(--text-muted);
+    border: 1px solid var(--border); border-radius: 12px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; margin-bottom: 0.5rem; transition: background 0.15s, border-color 0.15s;
+  }
+  .btn-mc-check.active { background: var(--btn-blue); color: #fff; border-color: var(--btn-blue); cursor: pointer; }
+  .btn-mc-check.active:hover { background: var(--btn-blue-hov); border-color: var(--btn-blue-hov); }
+  .mc-expl { margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); border-left: 3px solid var(--accent); padding-left: 0.75rem; line-height: 1.5; }
+
+  /* 3 action buttons for regular cards */
+  .btns { display: flex; gap: 0.6rem; width: 100%; max-width: 640px; margin-bottom: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .btns.show { opacity: 1; pointer-events: all; }
+  .btn { flex: 1; padding: 0.85rem; border: none; border-radius: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: transform 0.1s; }
+  .btn:active { transform: scale(0.97); }
+  .btn-no   { background: var(--wrong-btn); color: var(--wrong-on); }
+  .btn-yes  { background: var(--accent);    color: var(--accent-on); }
+  .btn-skip { background: var(--btn-blue);  color: #fff; }
+
+  /* Single continue button for MC cards */
+  .btn-mc-next {
+    display: none; width: 100%; max-width: 640px;
+    padding: 0.85rem; background: var(--btn-blue); color: #fff;
     border: none; border-radius: 12px; font-size: 1rem; font-weight: 600;
     cursor: pointer; margin-bottom: 1rem; transition: background 0.2s;
   }
-  .btn-next:hover { background: #2a8ab0; }
+  .btn-mc-next:hover { background: var(--btn-blue-hov); }
 
   .result {
     display: none; text-align: center; max-width: 640px; width: 100%;
-    background: #0a4a6b; border-radius: 16px; padding: 2.5rem 2rem; border: 1px solid #1a6a8b;
+    background: var(--surface); border-radius: 16px; padding: 2.5rem 2rem; border: 1px solid var(--border);
   }
-  .result h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #62d84e; }
-  .result .big-score { font-size: 3rem; font-weight: 700; margin: 1rem 0; }
-  .result p { color: #8ab4c2; margin-bottom: 0.5rem; }
-  .result .repeat-info { font-size: 0.85rem; color: #ffb347; margin-bottom: 1.5rem; }
-  .btn-restart {
-    background: #62d84e; color: #032D42; border: none;
-    padding: 0.85rem 2rem; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer;
-  }
-
-  .loading { color: #8ab4c2; font-size: 0.9rem; margin: 2rem 0; }
-  .no-cards { color: #ff6b6b; font-size: 0.9rem; margin: 2rem 0; }
+  .result h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--accent); }
+  .result .big-score { font-size: 3rem; font-weight: 700; margin: 1rem 0; color: var(--text); }
+  .result p { color: var(--text-muted); margin-bottom: 0.5rem; }
+  .result .rpt { font-size: 0.85rem; color: var(--repeat); margin-bottom: 1.5rem; }
+  .btn-restart { background: var(--accent); color: var(--accent-on); border: none; padding: 0.85rem 2rem; border-radius: 12px; font-size: 1rem; font-weight: 700; cursor: pointer; }
 </style>
 </head>
 <body>
 
-<h1>ServiceNow CTA</h1>
-<p class="subtitle" id="subtitle">Lernkarten werden geladen...</p>
+<div class="header-row">
+  <h1>ServiceNow CTA</h1>
+  <div style="display:flex;gap:0.5rem;">
+    <button class="theme-btn" id="modeBtn" onclick="toggleMode()">📖 Learn</button>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ Light</button>
+  </div>
+</div>
+<p class="subtitle" id="subtitle">Loading cards...</p>
 
 <div class="week-filter" id="weekFilter"></div>
 
-<div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
-<div class="progress-text" id="progressText"></div>
+<div class="prog-wrap"><div class="prog-bar" id="progBar"></div></div>
+<div class="prog-text" id="progText"></div>
 <div class="repeat-badge" id="repeatBadge"></div>
 
-<div class="score-bar">
-  <span class="score-correct" id="scoreCorrect">Richtig: 0</span>
-  <span class="score-wrong" id="scoreWrong">Falsch: 0</span>
+<div class="score-bar" id="scoreRow">
+  <span class="s-ok" id="sOk">Correct: 0</span>
+  <span class="s-no" id="sNo">Wrong: 0</span>
 </div>
 
-<div class="card-wrap" id="cardWrap" onclick="flipCard()">
+<div class="card-wrap" id="cardWrap" onclick="onCardClick(event)">
   <div class="card-inner" id="cardInner">
     <div class="card-front">
-      <div class="card-label">Frage</div>
+      <div class="card-label">Question</div>
       <div>
-        <span class="module-badge" id="cardModule"></span>
-        <span class="card-type-badge" id="cardTypeBadge"></span>
-        <span class="week-tag" id="cardWeekTag"></span>
+        <span class="mod-badge" id="cardMod"></span>
+        <span class="type-badge" id="cardType"></span>
+        <span class="wk-tag"    id="cardWk"></span>
       </div>
-      <div class="card-text" id="cardQuestion"></div>
-      <div class="card-hint">Klicken zum Aufdecken</div>
+      <div class="card-text" id="cardQ"></div>
+      <div class="mc-options" id="mcOpts"></div>
+      <div class="card-hint"  id="cardHint">Click to reveal</div>
     </div>
     <div class="card-back">
-      <div class="card-label">Antwort</div>
-      <div class="card-text" id="cardAnswer"></div>
+      <div class="card-label">Answer</div>
+      <div class="card-text" id="cardA"></div>
     </div>
   </div>
 </div>
 
-<div class="buttons">
-  <button class="btn btn-wrong"   id="btnWrong"   onclick="answer(false)">Nochmal</button>
-  <button class="btn btn-correct" id="btnCorrect" onclick="answer(true)">Gewusst</button>
+<div class="btns" id="btns">
+  <button class="btn btn-no"   onclick="doAnswer(false)">Nochmal</button>
+  <button class="btn btn-yes"  onclick="doAnswer(true)">Gewusst</button>
+  <button class="btn btn-skip" onclick="doSkip()">Weiter</button>
 </div>
-<button class="btn-next" id="btnNext" onclick="nextCard()">Weiter</button>
+<button class="btn-mc-check" id="btnMcCheck" onclick="submitMc()">Check answer</button>
+<div class="mc-expl" id="mcExplOut" style="display:none;width:100%;max-width:640px;margin-bottom:0.75rem;"></div>
+<button class="btn-mc-next" id="btnMcNext" onclick="doMcNext()">Next →</button>
 
 <div class="result" id="result">
-  <h2>Fertig!</h2>
-  <div class="big-score" id="resultScore"></div>
-  <p id="resultMsg"></p>
-  <p class="repeat-info" id="repeatInfo"></p>
-  <button class="btn-restart" onclick="restart()">Nochmal</button>
+  <h2>Done!</h2>
+  <div class="big-score" id="rScore"></div>
+  <p id="rMsg"></p>
+  <p class="rpt" id="rRpt"></p>
+  <button class="btn-restart" onclick="restart()">Again</button>
 </div>
 
 <script>
 const WEEKS = ['Week-0','Week-1','Week-2','Week-3','Week-4','Week-5','Week-6','Week-7','Week-8','Week-9','Week-10','Week-11','Week-12'];
-
-const typeConfig = {
-  what: { label: "Was?",        cls: "type-what" },
-  why:  { label: "Warum?",      cls: "type-why"  },
-  diff: { label: "Unterschied", cls: "type-diff" },
-  how:  { label: "Wie?",        cls: "type-how"  }
+const TYPE_CFG = {
+  what: { label:'What?', cls:'t-what' },
+  why:  { label:'Why?',  cls:'t-why'  },
+  diff: { label:'Diff',  cls:'t-diff' },
+  how:  { label:'How?',  cls:'t-how'  },
+  mc:   { label:'Quiz',  cls:'t-mc'   }
 };
 
-let allCards = {};      // week -> cards[]
-let activeWeeks = new Set();
-let cards = [];
+// State
+let allCards = {}, activeWeeks = new Set(), cards = [];
+let queue = [], repeatQueue = [], cur = 0, correct = 0, wrong = 0;
+let flipped = false, answered = false, mcDone = false;
+let testMode = true; // true = Test (score tracked), false = Learn (just advance)
 
-let queue = [];
-let repeatQueue = [];
-let current = 0;
-let correct = 0;
-let wrong = 0;
-let flipped = false;
-let answered = false;
+// ── Mode ───────────────────────────────────────────────────────
+function toggleMode() {
+  testMode = !testMode;
+  document.getElementById('modeBtn').textContent = testMode ? '📖 Learn' : '📝 Test';
+  document.getElementById('scoreRow').style.display = testMode ? 'flex' : 'none';
+  localStorage.setItem('cta-mode', testMode ? 'test' : 'learn');
+}
+function initMode() {
+  testMode = (localStorage.getItem('cta-mode') || 'test') === 'test';
+  document.getElementById('modeBtn').textContent = testMode ? '📖 Learn' : '📝 Test';
+  document.getElementById('scoreRow').style.display = testMode ? 'flex' : 'none';
+}
 
-// Load all available week JSONs
-async function loadAllWeeks() {
-  const results = await Promise.allSettled(
-    WEEKS.map(w =>
-      fetch(`${w}.json`)
-        .then(r => r.ok ? r.json().then(data => ({ week: w, data })) : null)
-    )
+// ── Theme ──────────────────────────────────────────────────────
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  localStorage.setItem('cta-theme', next);
+}
+function applyTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('themeBtn').textContent = t === 'dark' ? '☀️ Light' : '🌙 Dark';
+}
+function initTheme() { applyTheme(localStorage.getItem('cta-theme') || 'dark'); }
+
+// ── Load ───────────────────────────────────────────────────────
+async function loadAll() {
+  const res = await Promise.allSettled(
+    WEEKS.map(w => fetch(`${w}.json`).then(r => r.ok ? r.json().then(d => ({w, d})) : null))
   );
-
-  results.forEach(r => {
-    if (r.status === 'fulfilled' && r.value) {
-      const { week, data } = r.value;
-      allCards[week] = data.map(c => ({ ...c, week }));
-    }
+  res.forEach(r => {
+    if (r.status === 'fulfilled' && r.value)
+      allCards[r.value.w] = r.value.d.map(c => ({...c, week: r.value.w}));
   });
-
-  buildWeekFilter();
+  buildFilter();
   buildDeck();
 }
 
-function buildWeekFilter() {
-  const container = document.getElementById('weekFilter');
-  container.innerHTML = '';
+function buildFilter() {
+  const el = document.getElementById('weekFilter');
+  el.innerHTML = '';
+  const avail = WEEKS.filter(w => allCards[w]?.length);
+  if (!avail.length) return;
 
-  const available = WEEKS.filter(w => allCards[w] && allCards[w].length > 0);
-  if (available.length === 0) return;
+  const lbl = document.createElement('label');
+  lbl.className = 'wk-label wk-all';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox'; cb.checked = true;
+  cb.onchange = () => toggleAll(cb.checked);
+  lbl.append(cb, 'All');
+  el.appendChild(lbl);
 
-  // "Alle" checkbox
-  const allLabel = document.createElement('label');
-  allLabel.className = 'week-check-label all-label';
-  const allCb = document.createElement('input');
-  allCb.type = 'checkbox'; allCb.checked = true;
-  allCb.onchange = () => toggleAll(allCb.checked);
-  allLabel.appendChild(allCb);
-  allLabel.appendChild(document.createTextNode('Alle'));
-  container.appendChild(allLabel);
-
-  available.forEach(w => {
-    const label = document.createElement('label');
-    label.className = 'week-check-label';
-    const cb = document.createElement('input');
-    cb.type = 'checkbox'; cb.checked = true; cb.dataset.week = w;
-    cb.onchange = () => onWeekToggle();
-    label.appendChild(cb);
-    label.appendChild(document.createTextNode(w));
-    container.appendChild(label);
+  avail.forEach(w => {
+    const l = document.createElement('label');
+    l.className = 'wk-label';
+    const c = document.createElement('input');
+    c.type = 'checkbox'; c.checked = true; c.dataset.week = w;
+    c.onchange = onWeekToggle;
+    l.append(c, w);
+    el.appendChild(l);
     activeWeeks.add(w);
   });
 }
 
-function toggleAll(checked) {
-  document.querySelectorAll('[data-week]').forEach(cb => { cb.checked = checked; });
-  activeWeeks = new Set(checked ? WEEKS.filter(w => allCards[w]) : []);
-  buildDeck();
-  restart();
+function toggleAll(v) {
+  document.querySelectorAll('[data-week]').forEach(c => c.checked = v);
+  activeWeeks = new Set(v ? WEEKS.filter(w => allCards[w]) : []);
+  buildDeck(); restart();
 }
 
 function onWeekToggle() {
   activeWeeks = new Set();
-  document.querySelectorAll('[data-week]').forEach(cb => {
-    if (cb.checked) activeWeeks.add(cb.dataset.week);
-  });
-  // Sync "Alle" checkbox
-  const available = WEEKS.filter(w => allCards[w]);
-  const allCb = document.querySelector('.all-label input');
-  if (allCb) allCb.checked = activeWeeks.size === available.length;
-  buildDeck();
-  restart();
+  document.querySelectorAll('[data-week]').forEach(c => { if (c.checked) activeWeeks.add(c.dataset.week); });
+  const avail = WEEKS.filter(w => allCards[w]);
+  const allCb = document.querySelector('.wk-all input');
+  if (allCb) allCb.checked = activeWeeks.size === avail.length;
+  buildDeck(); restart();
 }
 
 function buildDeck() {
-  const available = WEEKS.filter(w => allCards[w]);
-  if (available.length === 0) {
-    document.getElementById('subtitle').textContent = 'Keine Lernkarten gefunden.';
-    document.getElementById('cardWrap').style.display = 'none';
-    return;
-  }
-
-  const selected = available.filter(w => activeWeeks.has(w));
-  cards = selected.flatMap(w => allCards[w]);
-
-  const label = selected.length === available.length
-    ? `Alle Wochen — ${cards.length} Karten`
-    : `${selected.join(', ')} — ${cards.length} Karten`;
-  document.getElementById('subtitle').textContent = cards.length > 0 ? label : 'Keine Woche ausgewählt.';
-  document.getElementById('cardWrap').style.display = cards.length > 0 ? 'block' : 'none';
+  const avail = WEEKS.filter(w => allCards[w]);
+  if (!avail.length) { document.getElementById('subtitle').textContent = 'No cards found.'; return; }
+  const sel = avail.filter(w => activeWeeks.has(w));
+  cards = sel.flatMap(w => allCards[w]);
+  document.getElementById('subtitle').textContent = cards.length
+    ? (sel.length === avail.length ? `All weeks` : sel.join(', ')) + ` — ${cards.length} cards`
+    : 'No week selected.';
+  document.getElementById('cardWrap').style.display = cards.length ? 'block' : 'none';
 }
 
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
+function shuffle(a) {
+  const b = [...a];
+  for (let i = b.length-1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; }
+  return b;
 }
 
-function formatAnswer(a) {
+function fmtAnswer(a) {
+  if (!a) return '';
   if (Array.isArray(a)) return '<ul>' + a.map(x => `<li>${x}</li>`).join('') + '</ul>';
-  return a;
+  return String(a);
 }
 
+function syncCardHeight() {
+  requestAnimationFrame(() => {
+    const front = document.querySelector('.card-front');
+    const back  = document.querySelector('.card-back');
+    if (!front || !back) return;
+    const h = Math.max(front.scrollHeight, back.scrollHeight, 240);
+    document.getElementById('cardInner').style.minHeight = h + 'px';
+  });
+}
+
+// ── Card rendering ─────────────────────────────────────────────
 function loadCard() {
-  if (cards.length === 0) return;
-  const idx = queue[current];
-  const card = cards[idx];
-  const isRepeat = repeatQueue.includes(idx) && current >= (queue.length - repeatQueue.length);
+  if (!cards.length) return;
+  const card = cards[queue[cur]];
+  const isRpt = repeatQueue.includes(queue[cur]) && cur >= (queue.length - repeatQueue.length);
 
-  document.getElementById('cardModule').textContent = card.module;
-  document.getElementById('cardWeekTag').textContent = card.week || '';
+  // Header badges
+  document.getElementById('cardMod').textContent = card.module || '';
+  document.getElementById('cardWk').textContent  = card.week   || '';
+  const tc = TYPE_CFG[card.type] || TYPE_CFG.what;
+  const tb = document.getElementById('cardType');
+  tb.textContent = tc.label;
+  tb.className   = 'type-badge ' + tc.cls;
 
-  const t = typeConfig[card.type] || typeConfig.what;
-  const badge = document.getElementById('cardTypeBadge');
-  badge.textContent = t.label;
-  badge.className = 'card-type-badge ' + t.cls;
+  // Question
+  document.getElementById('cardQ').textContent = card.q || '';
 
-  document.getElementById('cardQuestion').textContent = card.q;
-  document.getElementById('cardAnswer').innerHTML = formatAnswer(card.a);
+  // Reset state
   document.getElementById('cardInner').classList.remove('flipped');
-  document.getElementById('btnCorrect').classList.remove('visible');
-  document.getElementById('btnWrong').classList.remove('visible');
-  document.getElementById('btnNext').style.display = 'none';
-  document.getElementById('repeatBadge').textContent = isRepeat ? '↩ Wiederholung — diese Karte hattest du falsch' : '';
-  flipped = false;
-  answered = false;
-  updateProgress();
+  document.getElementById('btns').classList.remove('show');
+  document.getElementById('btnMcNext').style.display = 'none';
+  document.getElementById('btnMcCheck').style.display = 'none';
+  document.getElementById('btnMcCheck').classList.remove('active');
+  document.getElementById('mcExplOut').style.display = 'none';
+  document.getElementById('repeatBadge').textContent = isRpt ? '↩ Repeat — this card was wrong before' : '';
+  flipped = false; answered = false; mcDone = false;
+
+  const mcDiv = document.getElementById('mcOpts');
+  const hint  = document.getElementById('cardHint');
+  const ansEl = document.getElementById('cardA');
+
+  if (card.type === 'mc') {
+    // Front: show options, hide flip hint
+    hint.style.display = 'none';
+    ansEl.innerHTML    = '';         // clear back face
+    mcDiv.innerHTML    = '';
+    mcDiv.style.display = 'flex';
+    currentMcCard = card;
+    document.getElementById('btnMcCheck').style.display = 'none';
+    document.getElementById('btnMcCheck').classList.remove('active');
+
+    shuffle([...card.options]).forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className   = 'mc-opt';
+      btn.textContent = opt;
+      btn.onclick = e => { e.stopPropagation(); pickOption(opt, card); };
+      mcDiv.appendChild(btn);
+    });
+  } else {
+    // Front: show flip hint; Back: show answer
+    hint.style.display = 'block';
+    mcDiv.style.display = 'none';
+    mcDiv.innerHTML    = '';
+    ansEl.innerHTML    = fmtAnswer(card.a);
+  }
+
+  updateProg();
+  syncCardHeight();
 }
 
-function flipCard() {
+// currentMcCard holds reference while user is selecting options
+let currentMcCard = null;
+
+function pickOption(chosen, card) {
+  if (mcDone) return;
+  // Toggle selection
+  const btn = [...document.querySelectorAll('.mc-opt')].find(b => b.textContent.trim() === chosen.trim());
+  if (!btn) return;
+  btn.classList.toggle('selected');
+
+  // Show Check button once at least one option is selected
+  const anySelected = [...document.querySelectorAll('.mc-opt')].some(b => b.classList.contains('selected'));
+  const checkBtn = document.getElementById('btnMcCheck');
+  checkBtn.style.display = 'block';
+  checkBtn.classList.toggle('active', anySelected);
+}
+
+function submitMc() {
+  if (mcDone) return;
+  const card = currentMcCard;
+  const selected = [...document.querySelectorAll('.mc-opt.selected')].map(b => b.textContent.trim());
+  if (!selected.length) return;
+
+  mcDone   = true;
+  answered = true;
+
+  const correct_answers = Array.isArray(card.correct) ? card.correct.map(c => c.trim()) : [card.correct.trim()];
+  const allCorrectSelected = correct_answers.every(c => selected.includes(c));
+  const noWrongSelected    = selected.every(s => correct_answers.includes(s));
+  const isOk = allCorrectSelected && noWrongSelected;
+
+  // Highlight options
+  document.querySelectorAll('.mc-opt').forEach(b => {
+    b.disabled = true;
+    b.classList.remove('selected');
+    const txt = b.textContent.trim();
+    if (correct_answers.includes(txt))                                       b.classList.add('correct-ans');
+    else if (selected.includes(txt) && !correct_answers.includes(txt))      b.classList.add('wrong-ans');
+  });
+
+  // Hide check button, show explanation outside card
+  document.getElementById('btnMcCheck').style.display = 'none';
+  const explOut = document.getElementById('mcExplOut');
+  if (card.explanation) {
+    explOut.textContent = card.explanation;
+    explOut.style.display = 'block';
+  } else {
+    explOut.style.display = 'none';
+  }
+
+  // Score (test mode only)
+  if (testMode) {
+    if (isOk) { correct++; }
+    else {
+      wrong++;
+      if (!repeatQueue.includes(queue[cur])) { repeatQueue.push(queue[cur]); queue.push(queue[cur]); }
+    }
+    document.getElementById('sOk').textContent = `Correct: ${correct}`;
+    document.getElementById('sNo').textContent = `Wrong: ${wrong}`;
+  }
+
+  syncCardHeight();
+  document.getElementById('btnMcNext').style.display = 'block';
+}
+
+function onCardClick(e) {
+  if (e.target.closest('.mc-opt') || e.target.closest('.mc-expl')) return;
+  const card = cards[queue[cur]];
+  if (!card || card.type === 'mc') return;
   if (answered) return;
   flipped = !flipped;
   document.getElementById('cardInner').classList.toggle('flipped', flipped);
   if (flipped) {
-    document.getElementById('btnCorrect').classList.add('visible');
-    document.getElementById('btnWrong').classList.add('visible');
-  }
-}
-
-function answer(wasCorrect) {
-  if (answered) return;
-  answered = true;
-  if (wasCorrect) {
-    correct++;
-  } else {
-    wrong++;
-    const idx = queue[current];
-    if (!repeatQueue.includes(idx)) {
-      repeatQueue.push(idx);
-      queue.push(idx);
+    syncCardHeight();
+    if (testMode) {
+      document.getElementById('btns').classList.add('show');
+    } else {
+      answered = true;
+      document.getElementById('btnMcNext').style.display = 'block';
     }
   }
-  document.getElementById('scoreCorrect').textContent = `Richtig: ${correct}`;
-  document.getElementById('scoreWrong').textContent = `Falsch: ${wrong}`;
-  document.getElementById('btnCorrect').classList.remove('visible');
-  document.getElementById('btnWrong').classList.remove('visible');
-  document.getElementById('btnNext').style.display = 'block';
-  document.getElementById('btnNext').textContent = current + 1 < queue.length ? 'Weiter' : 'Ergebnis';
 }
 
-function nextCard() {
-  current++;
-  if (current >= queue.length) {
-    showResult();
-  } else {
-    loadCard();
+function doAnswer(ok) {
+  if (answered) return;
+  answered = true;
+  if (ok) { correct++; }
+  else {
+    wrong++;
+    if (!repeatQueue.includes(queue[cur])) { repeatQueue.push(queue[cur]); queue.push(queue[cur]); }
   }
+  document.getElementById('sOk').textContent = `Correct: ${correct}`;
+  document.getElementById('sNo').textContent = `Wrong: ${wrong}`;
+  document.getElementById('btns').classList.remove('show');
+  advance();
 }
 
-function updateProgress() {
-  const total = queue.length;
-  const pct = (current / total * 100).toFixed(0);
-  document.getElementById('progressBar').style.width = pct + '%';
-  const repeats = repeatQueue.length;
-  document.getElementById('progressText').textContent =
-    `${current + 1} / ${total}` + (repeats > 0 ? ` (+${repeats} Wiederholung${repeats > 1 ? 'en' : ''})` : '');
+function doSkip() {
+  if (answered) return;
+  answered = true;
+  document.getElementById('btns').classList.remove('show');
+  advance();
+}
+
+function doMcNext() {
+  document.getElementById('btnMcNext').style.display = 'none';
+  advance();
+}
+
+function advance() {
+  cur++;
+  if (cur >= queue.length) showResult();
+  else loadCard();
+}
+
+function updateProg() {
+  const pct = (cur / queue.length * 100).toFixed(0);
+  document.getElementById('progBar').style.width = pct + '%';
+  const r = repeatQueue.length;
+  document.getElementById('progText').textContent =
+    `${cur+1} / ${queue.length}` + (r ? ` (+${r} repeat${r>1?'s':''})` : '');
 }
 
 function showResult() {
   document.getElementById('cardWrap').style.display = 'none';
-  document.querySelector('.buttons').style.display = 'none';
-  document.getElementById('btnNext').style.display = 'none';
-  document.getElementById('progressBar').style.width = '100%';
+  document.getElementById('btns').classList.remove('show');
+  document.getElementById('btnMcNext').style.display = 'none';
+  document.getElementById('btnMcCheck').style.display = 'none';
+  document.getElementById('mcExplOut').style.display = 'none';
+  document.getElementById('progBar').style.width = '100%';
   document.getElementById('repeatBadge').textContent = '';
-  const pct = Math.round(correct / queue.length * 100);
-  document.getElementById('resultScore').textContent = pct + '%';
-  document.getElementById('resultMsg').textContent =
-    pct >= 85 ? `${correct} von ${queue.length} richtig — hervorragend!` :
-    pct >= 65 ? `${correct} von ${queue.length} richtig — gut, weiter üben!` :
-    `${correct} von ${queue.length} richtig — nochmal wiederholen.`;
-  document.getElementById('repeatInfo').textContent =
-    repeatQueue.length > 0
-      ? `${repeatQueue.length} Karte${repeatQueue.length > 1 ? 'n' : ''} wurden wiederholt.`
-      : 'Alle Karten auf Anhieb richtig!';
+  const total = queue.length;
+  if (testMode) {
+    const pct = Math.round(correct / total * 100);
+    document.getElementById('rScore').textContent = pct + '%';
+    document.getElementById('rMsg').textContent =
+      pct >= 85 ? `${correct} of ${total} correct — excellent!` :
+      pct >= 65 ? `${correct} of ${total} correct — good, keep going!` :
+                  `${correct} of ${total} correct — review again.`;
+    document.getElementById('rRpt').textContent = repeatQueue.length
+      ? `${repeatQueue.length} card${repeatQueue.length>1?'s':''} repeated.`
+      : 'All cards correct on first try!';
+  } else {
+    document.getElementById('rScore').textContent = total + ' cards';
+    document.getElementById('rMsg').textContent = 'All cards reviewed.';
+    document.getElementById('rRpt').textContent = 'Switch to Test mode to check your knowledge.';
+  }
   document.getElementById('result').style.display = 'block';
 }
 
 function restart() {
-  current = 0; correct = 0; wrong = 0;
-  repeatQueue = [];
-  document.getElementById('scoreCorrect').textContent = 'Richtig: 0';
-  document.getElementById('scoreWrong').textContent = 'Falsch: 0';
+  cur = 0; correct = 0; wrong = 0; repeatQueue = [];
+  document.getElementById('sOk').textContent = 'Correct: 0';
+  document.getElementById('sNo').textContent = 'Wrong: 0';
   document.getElementById('cardWrap').style.display = 'block';
-  document.querySelector('.buttons').style.display = 'flex';
+  document.getElementById('btns').classList.remove('show');
+  document.getElementById('btnMcNext').style.display = 'none';
+  document.getElementById('btnMcCheck').style.display = 'none';
+  document.getElementById('mcExplOut').style.display = 'none';
   document.getElementById('result').style.display = 'none';
-  queue = shuffle(Array.from({ length: cards.length }, (_, i) => i));
-  if (cards.length > 0) loadCard();
+  queue = shuffle(Array.from({length: cards.length}, (_,i)=>i));
+  if (cards.length) loadCard();
 }
 
 // Init
-loadAllWeeks().then(() => {
-  queue = shuffle(Array.from({ length: cards.length }, (_, i) => i));
-  if (cards.length > 0) loadCard();
+initMode();
+initTheme();
+loadAll().then(() => {
+  queue = shuffle(Array.from({length: cards.length}, (_,i)=>i));
+  if (cards.length) loadCard();
 });
 </script>
 </body>

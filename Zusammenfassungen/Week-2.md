@@ -1,134 +1,127 @@
-# Week 2 - Zusammenfassung
-
-## Governance für Instance & Release Strategy
-
-**3 Kernüberlegungen:**
-- Balance: Risikominimierung (Kontrolle) vs. Wertrealisierung (Geschwindigkeit)
-- Klare Policies für Code-/Datentransfer zwischen Environments
-- Abstimmung mit: Operating Model, Platform Scope, Instance Structure, Deployment Methodology
-
-**4 Governance-Bereiche:**
-- **Operating Model**: Delegated Dev, SI Partners, DevOps/Separation of Duties
-- **Platform Scope**: Apps/Products, Foundation Data, Regression Testing, Integrations, User Communities
-- **Instance Structure**: Anzahl/Zweck Environments, Capabilities, Multi-Dev Merge, Multi-Prod Deployment, Cloning
-- **Deployment Methodology**: Waterfall/Agile/SAFe, Release Cadence, Testing Strategy, Tooling
+# Week 2 - Summary
 
 ---
 
-## Instance Stacks
+### Governance for Instance & Release Strategy
 
-| Stack | Struktur | Wann |
-|-------|----------|------|
-| **3-Instance** | Dev → Test → Prod | Klein, schnell, wenig Komplexität |
-| **4-Instance** | Dev → QA → UAT → Prod | **~70% aller Implementierungen** — Standard für mittelgrosse bis grosse Orgs |
-| **5-Instance** | Dev → QA → UAT → Staging → Prod | Mehrere Teams, komplexe Integrationen, Staging für Pre-Prod Testing |
+**3 Core Considerations:**
+- Balance: risk mitigation (control) vs. value realization (speed)
+- Clear policies for moving code/data between environments
+- Alignment with: operating model, platform scope, instance structure, deployment methodology
 
-**Optional**: Training, Sandbox, Innovation
-
----
-
-## Instance Management Policies
-
-Upfront definieren für:
-- **Risikoreduktion**: Änderungen via definierten Prozess & Maintenance Windows
-- **MTTR-Reduktion**: Klare Support-Prozeduren und Teams
-- **Incident-Prävention**: besonders System Properties & Plugins!
-
-**Policy-Bereiche**: Instance Overview, Support Procedures, Critical Availability, Maintenance, Change Management, Advanced Permissions, System Properties, Plugins
-
-> **In grossen Instances mit mehreren Dev-Teams: System Property Policies kritisch — ein Team kann sonst das andere beeinflussen**
+**4 Governance Areas:**
+- **Operating Model**: delegated dev, SI partners, DevOps/separation of duties
+- **Platform Scope**: apps/products, foundation data, regression testing, integrations, user communities
+- **Instance Structure**: number/purpose of environments, capabilities, multi-dev merge, multi-prod deployment, cloning
+- **Deployment Methodology**: waterfall/agile/SAFe, release cadence, testing strategy, tooling
 
 ---
 
-## Multi-Dev Environments
+### Instance Stacks
 
-Separate Dev-Instances verhindern Konflikte bei paralleler Entwicklung:
-- **Split by Product**: Teams arbeiten unabhängig pro Solution
-- **Split by Release**: Jeder Release baut auf dem vorherigen auf
+| Stack | Structure | When |
+|---|---|---|
+| **3-Instance** | Dev → Test → Prod | Small orgs, fast go-live, low complexity |
+| **4-Instance** | Dev → QA → UAT → Prod | **~70% of all implementations** — standard for medium to large orgs |
+| **5-Instance** | Dev → QA → UAT → Staging → Prod | Multiple teams, complex integrations, staging for pre-prod testing |
 
-Master Data Sync via: Update Sets, App Repository oder Git SCM
-
----
-
-## Multi-Production Instances
-
-Mit Vorsicht — nur mit fundiertem Business-Grund:
-- **Data Residency**: Länderdaten müssen im Land bleiben
-- **Trennung internal/external**: z.B. HR-Instanz nicht aus Fremdnetz erreichbar
-
-**Anti-Patterns:**
-- Gleicher Prozess, gleiche Daten auf mehreren Instanzen → Single Instance bevorzugen
-- Schwere Integrationen (CMDB-Sync, Ticket-Sync) = Signal für fehlenden echten Grund
+Optional instances: Training, Sandbox, Innovation
 
 ---
 
-## Domain Separation
+### Instance Management Policies
 
-- Logische Trennung von Daten, Prozessen und UI auf einer Instanz
-- Provider = Instanz-Owner; Tenants = nutzende Orgs
-- 3 Bereiche: **Data** (domain-scoped visibility) | **Process** (Business Logic overrideable) | **UI** (Menus, Forms, Dashboards)
+Define upfront to:
+- **Reduce risk**: changes via defined process & maintenance windows
+- **Reduce MTTR**: clear support procedures and teams
+- **Prevent incidents**: especially critical for system properties & plugins
 
-> **MUSS vor jeglicher Entwicklungsarbeit aktiviert werden — nicht rückgängig zu machen!**
+Policy areas: Instance Overview, Support Procedures, Critical Availability, Maintenance, Change Management, Advanced Permissions, System Properties, Plugins
 
-**Für ✅**: Mehrere Entities auf einer Instanz, Compliance-Anforderungen, Global Reporting
-
-**Gegen ❌**: Physische DB-Trennung nötig, nur interne Kollaborationsprobleme, Tenants wollen volle Admin-Kontrolle
-
-**Alternativen**: Before Query Business Rules, ACLs, Views/View Rules
+> In large instances with multiple dev teams: system property policies are critical — one team can otherwise impact another's work.
 
 ---
 
-## Architekturmodelle
+### Multi-Dev Environments
 
-| Modell | Stärke | Schwäche | Kundenprofil |
-|--------|--------|----------|--------------|
-| **Deliberate Customization** | Flexibel, keine Extra-Lizenzen | Technical Debt, limitierter SN-Support | Koordinierte Teams, leichte Prozessvariationen |
-| **Multiple Instances** | Physische Datentrennung | Separate Lizenzen, hoher Governance-Aufwand | Sehr grosse Orgs, extreme Prozessabweichungen, Data Residency |
-| **Domain Separation** | OOTB, SN-Support vorhanden | Komplex, ggf. Zusatzkosten | MSPs, Holding-Companies, stark regulierte Branchen |
+Separate dev instances prevent conflicts in parallel development:
+- **Split by product**: teams work independently per solution
+- **Split by release**: each release builds on the previous one
 
----
-
-## Instance Data Replication (IDR)
-
-- Kopiert Daten von einer Instanz zu einer oder mehreren anderen — uni- oder bidirektional
-- **Producer**: konfiguriert Replication Sets (Tabelle + Filter + Attribute)
-- **Consumer**: empfängt Daten, kann transformieren, Business Rules triggern
-
-**Komplexitätsstufen:**
-
-| Komplexität | Use Case | Richtung |
-|-------------|----------|----------|
-| Niedrig | Foundation Data (Users, Groups, Location) | Unidirektional |
-| Mittel | CMDB/Asset-Daten | Bidirektional |
-| Hoch | Ticket-Daten (Incident, Request, Case) | Bidirektional via Staging Table |
-
-**IDR Limits:**
-- Seeding-Limit: 3 Mio Records pro Replication Set
-- Kein Schedule-Support (near real-time, kein fixer Zeitplan)
-- Kein Metadata-Replikation (Konfiguration, Settings)
-- Kein Export ausserhalb ServiceNow
-
-**Seeding vs. Replication**: Seeding = einmaliger Snapshot (kein Auto-Update danach); Replication = kontinuierlicher automatisierter Sync
-
-**Service Bridge** (statt IDR) für Cross-Org Request Management zwischen verschiedenen Organisationen
+Master data sync via: update sets, app repository, or Git SCM
 
 ---
 
-## Code Migration
+### Multi-Production Instances
 
-| Methode | Stärke | Key Points |
-|---------|--------|-----------|
-| **Update Sets** | OOTB, flexibel | XML-File; immer auf Non-Prod testen; Batching-Strategie empfohlen |
-| **App Repository** | Für fertige Apps | Alle Änderungen final vor Publish; Dependencies manuell tracken |
-| **Source Control (Git)** | Versionskontrolle, CI/CD | Nur 1 aktiver Branch pro App/Instanz; eigenes Repo pro Scope |
-| **AEMC** | Low-Code, visuelle Pipelines | RBAC + ATF + Instance Scan einrichten |
+Use with caution — only with a sound business reason:
+- **Data residency**: country data must stay in-country
+- **Separation internal/external**: e.g. HR instance not accessible from non-corporate networks
 
-> **Instance Migration ist KEINE OOTB Code-Migration-Option**
+Anti-patterns:
+- Same process, same data on multiple instances → prefer single instance
+- Heavy integrations (CMDB sync, ticket sync) = signal that there is no real reason for multiple instances
 
 ---
 
-## Key Takeaways
+### Domain Separation
 
-- Gute Governance ist essenziell: robustes Framework für Operating Model, Platform Scope, Instances & Methodology
-- Instance Stack auf Org-Bedürfnisse abstimmen: optimaler Stack + Instance Management Policies reduzieren Incident-Risiko
-- Architekturmodelle verstehen: Stärken, Schwächen und Use Cases kennen bevor Empfehlung an Kunden
+- Logical separation of data, processes, and UI on a single instance
+- Provider = instance owner; Tenants = organizations using the instance
+- 3 areas: **Data** (domain-scoped visibility) | **Process** (business logic overrideable per domain) | **UI** (menus, forms, dashboards overrideable per domain)
+- **Must be enabled BEFORE any development work — cannot be reversed!**
+
+For ✅: multiple entities on one instance, compliance requirements, global reporting needed
+
+Against ❌: physical DB separation required, only internal collaboration issues, tenants want full admin control
+
+Alternatives: Before Query Business Rules, ACLs, Views/View Rules
+
+---
+
+### Architectural Models
+
+| Model | Strength | Weakness | Customer Profile |
+|---|---|---|---|
+| **Deliberate Customization** | Flexible, no extra licenses | Technical debt, limited SN support | Coordinated teams, light process variation |
+| **Multiple Instances** | Physical data separation | Separate licenses, high governance effort | Very large orgs, extreme process deviations, data residency |
+| **Domain Separation** | OOTB, SN support available | Complex, possible extra cost | MSPs, holding companies, heavily regulated industries |
+
+---
+
+### Instance Data Replication (IDR)
+
+- Copies data from one instance to one or more others — uni- or bidirectional
+- **Producer**: configures replication sets (table + filter + attributes)
+- **Consumer**: receives data, can transform it, can trigger business rules
+
+**Complexity levels:**
+
+| Complexity | Use Case | Direction |
+|---|---|---|
+| Low | Foundation data (users, groups, location) | Unidirectional |
+| Medium | CMDB/Asset data | Bidirectional |
+| High | Ticket data (incident, request, case) | Bidirectional via staging table |
+
+**IDR Limitations:**
+- Seeding limit: 3 million records per replication set
+- No schedule support (near real-time, no fixed schedule)
+- No metadata replication (configuration, settings)
+- No export outside ServiceNow
+
+**Seeding vs. Replication**: Seeding = one-time snapshot (no auto-updates after); Replication = continuous automated sync
+
+**Service Bridge** (instead of IDR): use for cross-org request management between different organizations
+
+---
+
+### Code Migration
+
+| Method | Strength | Key Points |
+|---|---|---|
+| **Update Sets** | OOTB, flexible | XML file; always test on non-prod; batching strategy recommended |
+| **App Repository** | For finished apps | All changes finalized before publishing; dependencies tracked manually |
+| **Source Control (Git)** | Version control, CI/CD | Only 1 active branch per app/instance; own repo per scope |
+| **AEMC** | Low-code, visual pipelines | Set up RBAC + ATF + Instance Scan |
+
+> Instance Migration is **not** an OOTB code migration option.

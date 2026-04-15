@@ -1,140 +1,131 @@
-# Week 1 - Zusammenfassung
-
-## Role of the Technical Architect
-
-- Übersetzt Kundenanforderungen in architektonische Blueprints
-- Technisches Gateway zwischen Sales-Designs und Delivery-Teams (PMs, BAs, Architects, Developers)
-- Begleitet technische Governance-Prozesse und das Operating Model Design
-- Reduziert Risiko und minimiert Technical Debt durch Platform-Erfahrung
-
-> **CTAs brauchen mehr als technische Skills — Service Management, Operational Skills und Soft Skills (Kommunikation, Verhandlung, Einfluss) sind gleichwertig**
+# Week 1 - Summary
 
 ---
 
-## Articulate the Value of the Platform
+### Role of the Technical Architect
 
-### Value Proposition
-
-- Organisationen erreichen Business Outcomes durch **People, Processes, Technology**
-- Key Outcomes: Single System of Truth for IT, optimized service delivery, cybersecurity risks mitigated, application inventory managed, customer engagement reimagined
-- Value Propositions müssen durch **klare, messbare Evidenz** belegt werden: Daten, ROI, Customer Success Stories, KPIs
-
-### 3 Schritte für eine Value Proposition
-
-1. Gewünschte Outcomes des Kunden verstehen
-2. Relevante Lösungen und Capabilities identifizieren
-3. Werthaltige Metriken kommunizieren, die dem Kunden wichtig sind
-
-### 2 Schlüsselressourcen
-
-| Resource | Zweck |
-|----------|-------|
-| **Now Create** | Prescriptive Methodology — Success Packs mit Blueprints, Leading Practices, Projektempfehlungen |
-| **Resource Center** | Repository: Analyst Reports, Solution Briefs, Customer Case Studies, eBooks, Whitepapers |
-
-> **Success Packs sind das Herzstück von Now Create — nicht Teil des Resource Centers**
-
-### Know Your Audience
-
-| Persona | Fokus |
-|---------|-------|
-| **Executives (CIO, CFO)** | ROI, strategischer Impact, Kosteneinsparung, Security & Compliance (high-level) |
-| **IT Leaders** | System Performance, Governance, Skalierbarkeit, Alignment mit IT-Strategie |
-| **Developers** | APIs, Integration Patterns, Technical Specs, Error Handling |
-| **Process Users** | UX-Verbesserungen, weniger manueller Aufwand, Self-Service, benötigtes Training |
+- Translates customer requirements into architectural blueprints
+- Acts as the technical gateway between sales designs and delivery teams (PMs, BAs, Architects, Developers)
+- Guides technical governance and operating model design
+- Reduces risk and minimizes technical debt through platform expertise
+- Requires more than technical skills: service management, operational skills, and soft skills (communication, negotiation, influence) are equally important
 
 ---
 
-## Current and To-Be Architecture
+### Articulate the Value of the Platform
 
-### DEAP — 4 Technical Architecture Domains
+#### Value Proposition
 
-| Domain | Fokus |
-|--------|-------|
-| **D — Data Management** | Datenqualität, Sicherheit, Zuverlässigkeit; Ownership, Verfügbarkeit, Integrationsstandards |
-| **E — Environment Management** | Dev/Test/Release Workflows; Security Controls und User Access pro Instanz |
-| **A — App Development Management** | Entwicklungsstandards, Leading Practices, Reduzierung Technical Debt |
-| **P — Platform Management** | Upgrades, Patches, Access, Maintenance; langfristig weniger Wartungsaufwand |
+- Organizations achieve business outcomes through **People, Processes, Technology**
+- Key outcomes: single system of truth for IT, optimized service delivery, mitigated cybersecurity risks, managed application inventory, reimagined customer engagement
+- Value propositions must be backed by clear, credible evidence: data, ROI, customer success stories, KPIs
 
-### 3-Schritt Vorgehen für Architecture Assessment
+#### 3 Steps to Build a Value Proposition
 
-1. **Stakeholder identifizieren** — strukturierte Interviews, Dokumentation sammeln
-2. **Dokumentieren, Analysieren, Interpretieren** — Redundanzen, Gaps, Misalignment erkennen
-3. **Findings präsentieren** — strukturierte Diagramme, Heatmaps; mit Stakeholdern validieren
+1. Understand the customer's desired outcomes
+2. Identify the relevant solutions and capabilities
+3. Communicate value-added metrics that matter to the customer
 
-### Interview Leading Practices
+#### Key Resources
 
-- Unter **einer Stunde** halten
-- Max. **zwei Teilnehmer** pro Session
-- **Offene Fragen** stellen
-- Dokumente anfragen
-- Fokus auf die vier DEAP-Domänen
+| Resource | Purpose |
+|---|---|
+| **Now Create** | Prescriptive methodology — Success Packs with blueprints, leading practices, project recommendations |
+| **Resource Center** | Repository: analyst reports, solution briefs, customer case studies, eBooks, whitepapers |
 
-### Heatmap
+> Success Packs belong to **Now Create** — not to the Resource Center.
+
+#### Know Your Audience
+
+| Persona | Focus |
+|---|---|
+| **Executives (CIO, CFO)** | ROI, strategic impact, cost savings, high-level security & compliance |
+| **IT Leaders** | System performance, governance, scalability, alignment with IT strategy |
+| **Developers** | APIs, integration patterns, technical specs, error handling |
+| **Process Users** | UX improvements, reduced manual effort, self-service, required training |
+
+---
+
+### Current and To-Be Architecture
+
+#### DEAP — 4 Technical Architecture Domains
+
+| Domain | Focus |
+|---|---|
+| **D — Data Management** | Data quality, security, reliability; ownership, availability, integration standards |
+| **E — Environment Management** | Dev/test/release workflows; security controls and user access per instance |
+| **A — App Development Management** | Development standards, leading practices, reduction of technical debt |
+| **P — Platform Management** | Upgrades, patches, access, maintenance; long-term reduced maintenance effort |
+
+#### 3-Step Architecture Assessment Process
+
+1. **Identify stakeholders and gather information** — structured interviews, collect documentation
+2. **Document, analyze, and interpret results** — identify redundancies, gaps, misalignment
+3. **Present findings** — structured diagrams, heatmaps; validate with stakeholders
+
+#### Interview Best Practices
+
+- Keep interviews under one hour
+- Max. two participants per session
+- Ask open-ended questions
+- Request relevant documents
+- Focus on the four DEAP domains
+
+#### Heatmap
 
 - **CUS** = Customer Effort / **ENG** = Engagement Effort
-- Grün = kein Gap / Baseline-Funktionalität
-- Gelb = kleiner Gap / Konfiguration nötig
-- Pink/Rot = signifikanter Gap / muss gebaut werden oder unbekannt
+- Green = no gap / baseline functionality
+- Yellow = minor gap / requires configuration
+- Pink/Red = significant gap / must be built or unknown
+- **Always present effort estimations — missing estimates undermine credibility**
 
-> **Immer Aufwandsschätzungen präsentieren — auch wenn approximativ. Fehlende Schätzungen untergraben die Glaubwürdigkeit.**
+#### Existing ServiceNow Customers
 
-### Dokumentationskategorien
+- **ServiceNow Capability Map**: documents licensed, activated, and actively used products
+- Identify **Hot Spots** (areas needing improvement)
+- Pink = improvement area / Light Blue = licensed
 
-- Applications & Software
-- Infrastructure (Cloud, On-Premises, Netzwerke)
-- Data Flows
-- Security & Compliance
+#### To-Be Architecture Diagram
 
-### Bestehende ServiceNow Kunden
+Includes: ServiceNow instances, disparate systems, integrations, authentication systems, portals, data lakes, external service providers
 
-- **ServiceNow Capability Map**: dokumentiert lizenzierte, aktivierte und aktiv genutzte Produkte
-- **Hot Spots** identifizieren (Bereiche die Verbesserung brauchen)
-- Pink = Verbesserungsbereich / Light Blue = lizenziert
+#### Transition Architecture
 
-> **Stakeholder Buy-in ist der wichtigste Aspekt jeder Assessment — Playback Session = Validierung, keine Konfrontation**
+- Bridge between current state and to-be state via incremental phases
+- Manages complexity and risk while maintaining business continuity
+- Purpose of each phase must be clearly communicated to stakeholders
 
-### To-Be Architecture Diagram
+#### Common Challenges
 
-Enthält: ServiceNow Instanzen, verteilte Systeme, Integrationen, Authentifizierungssysteme, Portale, Data Lakes, externe Serviceprovider
-
-### Transition Architecture
-
-- Bridge zwischen Current State und To-Be State via **inkrementelle Phasen**
-- Verwaltet Komplexität und Risiko bei Business Continuity
-- Zweck jeder Phase muss den Stakeholdern klar erklärt werden
-
-### Häufige Herausforderungen
-
-- Kein Executive Sponsorship → schwierig Beteiligung und strategische Ausrichtung zu sichern
-- Nur IT-Teams einbeziehen → fehlendes Verständnis wie Technologie tatsächlich genutzt wird
-- Zu viele Personen in Interviews → unkonzentrierte Sessions, keine Tiefe
+- **No executive sponsorship** → hard to secure participation and strategic alignment
+- **Only involving IT teams** → misses how technology is actually used
+- **Too many people in interviews** → unfocused sessions, no depth
 
 ---
 
-## Communication Essentials
+### Communication Essentials
 
-### Pyramid Model of Communication (Bottom to Top)
+#### Pyramid Model of Communication (bottom to top)
 
-1. **Credibility Foundation** — Vertrauen durch Zuverlässigkeit und Professionalität
-2. **Information Governance** — Richtige Infos mit den richtigen Personen teilen
-3. **Message Architecture** — Inhalt, Zielgruppe und Timing strukturieren
-4. **Expression Strategy** — Ton, Lieferstil und Klarheit
-5. **Contextual Personalization** — Kommunikation auf individuelle Bedürfnisse anpassen
+1. **Credibility Foundation** — trust through reliability and professionalism
+2. **Information Governance** — share the right information with the right people
+3. **Message Architecture** — structure content, audience, and timing
+4. **Expression Strategy** — tone, delivery style, and clarity
+5. **Contextual Personalization** — tailor communication to individual needs
 
-### 5 Schritte zur Kommunikation von Value
+#### 5 Steps to Communicate Value
 
-1. **Discover** — Gespräche fördern um Pain Points zu identifizieren
-2. **Listen & Empathize** — Bedenken reflektieren, Verständnis zeigen
-3. **Tailor Message** — Capabilities auf Bedürfnisse mappen
-4. **Align to Objectives** — Mit Business Outcomes verknüpfen
-5. **Quantify** — Messbare Benefits teilen
+1. **Discover** — encourage conversations to identify pain points
+2. **Listen & Empathize** — reflect concerns, show understanding
+3. **Tailor Message** — map capabilities to needs
+4. **Align to Objectives** — link to business outcomes
+5. **Quantify** — share measurable benefits
 
-### Feedback Modelle
+#### Feedback Models
 
-| Modell | Struktur | Wann |
-|--------|----------|------|
-| **SBI** | Situation → Behavior → Impact | Konzises, ereignisfokussiertes Feedback |
-| **CEDAR** | Context → Example → Diagnosis → Action → Review | Tieferes, entwicklungsorientiertes Feedback |
+| Model | Structure | When |
+|---|---|---|
+| **SBI** | Situation → Behavior → Impact | Concise, event-focused feedback |
+| **CEDAR** | Context → Example → Diagnosis → Action → Review | Deeper, development-oriented feedback |
 
-> **Architekten müssen komplexe Infos in klare Botschaften übersetzen — unklare Kommunikation führt zu falschen Entscheidungen und verlorenem Stakeholder-Vertrauen**
+> Architects must translate complex information into clear messages — unclear communication leads to wrong decisions and lost stakeholder trust.

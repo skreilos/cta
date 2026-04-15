@@ -1,127 +1,130 @@
-# Week 3 - Zusammenfassung
-
-## Was ist Governance?
-
-- Entscheidungsframework: definiert wie ServiceNow-Strategie-, Portfolio- und technische Entscheidungen getroffen werden, und wer die Autorität dazu hat
-- **Nicht** das Operating Model (Operating Model = wie Produkte/Services zu Konsumenten gelangen)
-- Governance ist fundamental für das Wachstum und die Skalierung einer Enterprise-Platform
-
-**Warum in Governance investieren?**
-- Treibt die Transformationsvision: richtet Investments an strategischen Zielen aus
-- Liefert die richtige Arbeit zur richtigen Zeit: klare Rollen, weniger Blockaden
-- Erhält die Integrität der Implementierung: Leitlinien, Standards, Best Practices
+# Week 3 - Summary
 
 ---
 
-## Governance Key Players
+### What is Governance?
 
-| Rolle | Hauptverantwortung |
-|-------|-------------------|
-| **Executive Sponsor** | Vorsitz Executive Steering Committee; setzt Vision, sichert Funding |
-| **Platform Owner** | Strategische Roadmap; Governance Policies; Co-Chair TGB möglich |
-| **Platform Architect** | Best Practices für Data Modelling, Integrations, Configs; Co-Chair TGB |
-| **Demand Manager** | Vorsitz Demand Board; Demand-Priorisierung nach Value/Urgency/Resources |
-| **Process Owner** | Best Practices für eigenen Prozess; genehmigt Prozessänderungen |
-| **Developer / Admin** | Impact Assessment; Dokumentation; Change Control |
+- Decision-making framework: defines how ServiceNow strategy, portfolio, and technical decisions are made, and who has authority
+- Not an operating model (operating model = how products/services reach consumers)
+- Governance is foundational to growing and scaling an enterprise platform
+
+**Why invest in governance?**
+- Drives transformation vision: aligns investments with strategic goals, ensures appropriate resource allocation
+- Delivers the right work at the right time: clear roles/responsibilities reduce roadblocks, enable faster decision-making
+- Maintains implementation integrity: provides guidelines, standards, and leading practices
 
 ---
 
-## Governance Boards
+### Governance Key Players
 
-**3 Boards, 3 Fokusebenen:**
+| Role | Main Responsibility |
+|---|---|
+| **Executive Sponsor** | Chairs Executive Steering Committee; sets vision, secures funding |
+| **Platform Owner** | Strategic roadmap; governance policies; may co-chair TGB |
+| **Platform Architect** | Best practices for data modelling, integrations, configs; may co-chair TGB |
+| **Demand Manager** | Chairs Demand Board; demand prioritization based on value/urgency/resources |
+| **Process Owner** | Best practices for own process; approves process changes |
+| **Developer / Administrator** | Impact assessment; documentation; change control |
 
-| Board | Fokus | Zusammensetzung |
-|-------|-------|-----------------|
-| **Executive Steering Board** | Strategie | Senior IT + Business Leaders |
+---
+
+### Governance Boards
+
+**3 Boards, 3 Focus Levels:**
+
+| Board | Focus | Composition |
+|---|---|---|
+| **Executive Steering Board** | Strategy | Senior IT + Business Leaders |
 | **Demand Board** | Portfolio | Platform & Process Owners |
-| **Technical Governance Board** | Technisch | IT Leaders + Architects |
+| **Technical Governance Board** | Technical | IT Leaders + Architects |
 
-Flow: ESB → strategische Prinzipien → Demand Board → Demand für Assessment → TGB → Lösung/Design/Impact/Effort → Operations CAB → Implementierung
+Flow: ESB sends strategic principles → Demand Board sends demand for assessment → TGB returns solution/design/impact/effort → Operations CAB handles implementation
 
-> **Schlüssel: Separate Expertise pro Ebene, aber offene Kommunikation zwischen Boards verhindert Silo-Denken**
+> Key principle: separate expertise per level, but open communication between boards prevents siloed decisions.
+
+**CTA role in TGB:**
+- Help outline the board's charter, scope, roles, and responsibilities
+- Provide expertise on platform architecture, scalability, and maintainability
+- Help define coding standards, development guidelines, and security policies
+- Identify strategies for addressing technical debt and legacy issues
 
 ---
 
-## Technical Governance Domains (DEAP)
+### Technical Governance Domains (DEAP)
 
-Das TGB überwacht 4 Domänen:
+#### Data Management
 
-### Data Management
-- **Data Owners**: verantwortlich für Genauigkeit, müssen Policies durchsetzen können
-- **Data Stewards**: verbessern Compliance mit Policies und Standards
+- **Data owners**: responsible for accuracy, must have authority to enforce policies
+- **Data stewards**: improve compliance with policies and standards
 - Tools: Discovery, Service Mapping, Identification & Reconciliation Engine
-- Production = Single Source of Truth; IDR oder Cloning für Konsistenz über Instanzen
+- Production = single source of truth; IDR or cloning for consistency across instances
+- Security: authentication, RBAC, encryption; regulated industries may require additional safeguards
+- Integrations: start with pre-built (ServiceNow Store) before custom solutions
 
-### Environment Management
-- Instance Structure = Fundament des Environment Governance
-- Früh definieren — idealerweise im Pre-Sales Engagement mit ServiceNow
+#### Environment Management
 
-### App Development Management
-> **Custom Development nur wenn Configuration die Business Needs nicht erfüllt**
-> **Konsistente Naming Conventions über alle Artifacts (Update Sets, Script Includes, Business Rules, Workflows, Tables)**
-> **Entscheidungsfrage: Überwiegt der Business-Value die Risiken (Technical Debt, Upgradeability)?**
+- Instance structure = foundation of environment governance
+- Define early — ideally in pre-sales engagement with ServiceNow
 
-### Platform Management
-**Access Policies definieren:**
-- Wer hat Zugang? Welches Level? Prozess für Zugangsanfragen? Training/Zertifizierung? Wer genehmigt?
-- Typen: Access Levels, Now Support Access, Temporary Access
+#### App Development Management
 
-**Upgrade Management** (SN Leading Practice: mindestens 1x pro Jahr upgraden):
-- Policy-Bereiche: Process, Approvals, Testing, Scheduling, Communications, Support
+- Custom development only when configuration cannot meet business needs
+- Consistent naming conventions across all artifacts (update sets, script includes, business rules, workflows, tables)
+- Key question: does the business value of customization outweigh the risk (technical debt, upgradeability)?
+- Policies should be reviewed and communicated frequently to all stakeholders
 
-**Performance Monitoring**: tägliche, wöchentliche, monatliche, quartalsweise Hygiene-Aktivitäten
+#### Platform Management
 
----
+**Access policies — define:**
+- Who has access? What level? How to request? Training/certification required? Who approves?
+- Types: Access Levels, Now Support Access, Temporary Access
 
-## Governance Golden Rules
+**Upgrade management** (SN leading practice: upgrade at least once per year):
+- Policy areas: process, approvals, testing, scheduling, communications, support
 
-- **Out-of-the-box first**: Passe das Business an bevor du die Platform anpasst
-- **Single System of Record**: Nur CIs/Attribute/Relationships mit tatsächlichem Verwendungszweck im CMDB
-- **Outcomes over Features**: Fokus auf Business Outcomes, nicht Legacy-Features
-- **Automation**: Prozesse zur Datenpflege automatisieren
-- **80/20 Rule**: 80% des unmittelbaren Business Needs abdecken, nicht für Edge Cases konfigurieren
-- **Upgrades**: Auf dem aktuellen Release bleiben (X Monate nach Release) via Rapid Deployment + Automated Testing
-- **Integrations**: Nur notwendige Integrationen; Bespoke Builds als letzter Ausweg
+**Performance monitoring**: define hygiene activities at daily, weekly, monthly, and quarterly frequency
 
 ---
 
-## Governance & Continuous Improvement
+### Governance Golden Rules
 
-**2 Dimensionen:**
-1. Governance Boards priorisieren Platform-Verbesserungen
-2. Der Governance-Prozess selbst wird kontinuierlich verbessert
-
-**Key Areas für Continuous Improvement:**
-- Feedback Collection, Performance Optimization, Defect Identification & Resolution
-- Technology Upgrades, Change Management, Monitoring & Analytics, Stakeholder Engagement, Best Practices
-
-**Tools für Platform Health:**
-- **ITOM Health**: AI-basiertes Monitoring, Event Correlation, Log Analytics — Health Log Analytics predicts issues before impact
-- **Instance Scan**: Konfigurationsprüfung auf Health Issues und Best Practice Verstösse — nutzbar in Dev Ops, Release Management, Pre/Post Upgrades
+- **Out-of-the-box first**: adjust the business before adjusting the platform; customize only when there is a clear business need and no alternative
+- **Single system of record**: only CIs/attributes/relationships in CMDB with actual usage requirement
+- **Outcomes over features**: focus on business outcomes, not legacy features
+- **Automation**: automate processes for data maintenance and monitoring
+- **80/20 rule**: deliver 80% of immediate business need, don't configure for edge cases
+- **Upgrades**: stay current within X months of release via rapid deployment + automated testing
+- **Integrations**: only necessary integrations; bespoke builds as last resort
 
 ---
 
-## Governance Optimization
+### Governance & Continuous Improvement
 
-- Ziel: **richtiges Mass an Governance** — nicht zu wenig, nicht zu viel
-- Zu wenig → Unentschlossenheit & Risiken
-- Zu viel → "Red Tape", blockiert Innovation
+**2 Dimensions:**
+1. Governance boards prioritize platform improvements
+2. The governance process itself is continuously improved
 
-**3 Hebel:**
-1. **Metrics definieren**: Was zeigt wann Governance funktioniert?
-2. **Bottlenecks entfernen**: Systematisch hinterfragen und beseitigen
-3. **Decisions triagen**: Nur die wichtigsten Entscheidungen zu den Boards, Rest an die Front Lines
+**Key areas:** feedback collection, performance optimization, defect resolution, technology upgrades, change management, monitoring & analytics, stakeholder engagement, best practices
 
-**Metriken (Lagging vs. Leading):**
-- Lagging: Erfolg gegen Top-Level KPIs (schwer direkt auf Governance zurückzuführen)
-- Leading: Anzahl Board-Entscheidungen pro Quartal, Participation Rate, % Eskalations-Reduktion, % Policies aktuell
-
-> **Governance-Metriken müssen nicht exakt sein — anekdotische Richtwerte reichen aus**
+**Tools for platform health:**
+- **ITOM Health**: AI-driven monitoring, event correlation, log analytics — Health Log Analytics predicts issues before they impact users
+- **Instance Scan**: checks for configurations indicating health issues and best practice violations — usable in dev ops, release management, pre/post upgrades
 
 ---
 
-## Key Takeaways
+### Governance Optimization
 
-- **Gute Governance beschleunigt Entscheidungen**: Klärt wer entscheidet, wie, und welche Outcomes erwartet werden
-- **Strategie treibt Governance**: Erst strategische Entscheidungsprozesse definieren, dann technische Standards daraus ableiten
-- **Governance treibt Continuous Improvement**: Integration von Governance und CI ermöglicht Risikomanagement und Wachstum
+- Goal: right amount of governance — not too little, not too much
+- Too little → indecision and implementation risks
+- Too much → "red tape," blocks innovation
+
+**3 Levers:**
+1. **Define metrics**: find the measures that show when governance works and when it doesn't
+2. **Remove bottlenecks**: systematically identify and eliminate them
+3. **Triage decisions**: only the most important decisions go to boards, the rest to front lines
+
+**Metrics (Lagging vs. Leading):**
+- Lagging: success against top-level KPIs (hard to directly attribute to governance)
+- Leading: number of board decisions per quarter, board participation rate, % escalation reduction, % policies current
+
+> Governance metrics don't need to be exact — simple, even anecdotal benchmarks tracked over time are sufficient to identify improvement opportunities.

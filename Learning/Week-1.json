@@ -242,5 +242,78 @@
     "module": "Current & To-Be Arch.", "type": "how",
     "q": "What 3 principles guide preparation of the final architecture presentation?",
     "a": ["Define the format based on stakeholder preferences (diagrams, reports, dashboards)", "Make it transparent: involve technical teams, business leaders, and end users — gather feedback, refine, validate", "Present the final readout: key findings, recommended solutions, expected benefits — to a well-prepared audience (no surprises)"]
+  },
+
+  {
+    "module": "Articulate the Value", "type": "mc",
+    "q": "How does understanding a customer's desired outcomes improve the effectiveness of platform value articulation?",
+    "options": [
+      "Allows CTAs to tailor messages to address specific pain points and demonstrate measurable benefits",
+      "Enables CTAs to present a comprehensive list of all available platform features",
+      "Provides a standard script applicable across all customer presentations",
+      "Allows CTAs to focus exclusively on technical specifications and API capabilities"
+    ],
+    "correct": ["Allows CTAs to tailor messages to address specific pain points and demonstrate measurable benefits"],
+    "explanation": "Understanding desired outcomes means relevant, targeted communication — not generic feature lists. The goal is to map capabilities to what actually matters to that specific customer."
+  },
+  {
+    "module": "Articulate the Value", "type": "mc",
+    "q": "What is the primary purpose of Now Create when articulating the value of the ServiceNow platform?",
+    "options": [
+      "Provides a prescriptive methodology with project-specific Success Packs, blueprints, and best practices",
+      "Acts as a repository for analyst reports, customer case studies, and solution briefs",
+      "Serves as a training and certification platform for ServiceNow professionals",
+      "Functions as a marketing tool to showcase platform features to executive buyers"
+    ],
+    "correct": ["Provides a prescriptive methodology with project-specific Success Packs, blueprints, and best practices"],
+    "explanation": "Now Create is the methodology. The Resource Center holds sales/value assets (reports, case studies). The Learning Portal handles training. Neither is a marketing tool."
+  },
+  {
+    "module": "Articulate the Value", "type": "mc",
+    "q": "As a CTA presenting integration benefits to process users (service desk agents, business users), which approach best addresses their needs?",
+    "options": [
+      "Highlight how integrations simplify daily tasks, reduce manual effort, improve workflows, and include required training",
+      "Explain API capabilities, integration patterns, and technical error handling mechanisms",
+      "Focus on ROI, cost savings, and strategic business alignment",
+      "Discuss system performance, scalability, and governance impact"
+    ],
+    "correct": ["Highlight how integrations simplify daily tasks, reduce manual effort, improve workflows, and include required training"],
+    "explanation": "Process users care about UX and workflow changes, not APIs or ROI. APIs = developers; ROI/strategic = executives; performance/scalability = IT leaders."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "mc",
+    "q": "Which DEAP domain defines the structure and processes supporting development, testing, and release workflows — including security controls per persona?",
+    "options": [
+      "Environment Management (E)",
+      "App Development Management (A)",
+      "Data Management (D)",
+      "Platform Management (P)"
+    ],
+    "correct": ["Environment Management (E)"],
+    "explanation": "Environment Management covers structured dev/test/release workflows and per-instance security controls based on personas and permissions. App Development Management focuses on development standards and reducing technical debt — different scope."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "mc",
+    "q": "What is the initial step in the architectural assessment process?",
+    "options": [
+      "Identify stakeholders and gather information",
+      "Document, analyze, and interpret results",
+      "Present findings to project leadership",
+      "Create the to-be architecture diagram"
+    ],
+    "correct": ["Identify stakeholders and gather information"],
+    "explanation": "Without this foundation, gaps, heatmaps, and to-be architecture lack factual basis. Identifying who knows what and gathering their input comes before any analysis or presentation."
+  },
+  {
+    "module": "Current & To-Be Arch.", "type": "mc",
+    "q": "After stakeholder interviews, which two actions best reflect effective preparation of findings for project leadership?",
+    "options": [
+      "Prepare a structured visual report with key insights, gaps, and recommended next steps",
+      "Schedule a review session to validate findings and gather stakeholder feedback",
+      "Share raw, unprocessed interview notes with all stakeholders for transparency",
+      "Present system-level technical details as the primary output to project leadership"
+    ],
+    "correct": ["Prepare a structured visual report with key insights, gaps, and recommended next steps", "Schedule a review session to validate findings and gather stakeholder feedback"],
+    "explanation": "Raw notes are unprocessed and not actionable. System-level technical details are not suitable for project leadership. A structured report combined with a validation session gives leadership clear, verified findings."
   }
 ]
