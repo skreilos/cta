@@ -374,6 +374,23 @@ The latest CSDM iteration (v5.0) is designed to support organizations through th
 
 ![CSDM 5.0 overview.png](CSDM%205.0%20overview.png)
 
+### CSDM v5.0 Domains
+
+**Design & Plan**
+Enhanced in v5.0 to handle business applications, platform hosts, and product models.
+
+**Build & Integrate**
+In v5.0 includes software bill of materials (SBOM) support in line with Cyclone DX specifications.
+
+**Deliver**
+In v5.0 introduces the "Service Instance" base class, providing greater flexibility for different industry contexts.
+
+**Consume**
+Focuses on offerings, products, and services available to customers.
+
+**Ideate**
+A new domain in CSDM v5.0 capturing planning elements and business models.
+
 ### CSDM: A Staged Approach
 
 ServiceNow does not recommend implementing all elements of the CSDM data model at once. The recommended staged approach breaks down into five stages:
@@ -385,4 +402,333 @@ ServiceNow does not recommend implementing all elements of the CSDM data model a
 | **Walk** | Three additional OOB tables: Technology Management Service, Technology Management Service Offering (service classification: Technical Service), and Dynamic CI Group |
 | **Run** | Three additional OOB tables: Business Service Portfolio (not a CMDB table), Business Service (service classification: Business Service), and Business Service Offering (service classification: Business Service) |
 | **Fly** | Two additional OOB tables: Business Capability and Information Object. Request catalog capabilities with Service Offerings are also valuable |
+
+> **Quiz**
+> **Q:** Which of the following statements about the Common Service Data Model (CSDM) are correct? (Select all that apply)
+> **Options:**
+> - CSDM is primarily used to monitor network infrastructure configurations.
+> - CSDM is only applicable to organizations using ServiceNow IT Operations Management (ITOM).
+> - CSDM provides a standard set of terms and definitions for use across all ServiceNow products.
+> - CSDM ensures that data resides in the appropriate CMDB tables, improving quality and automation.
+> - The CSDM conceptual model includes domains such as Build, Design, and Consume.
+> **Correct:** CSDM provides a standard set of terms and definitions for use across all ServiceNow products. / CSDM ensures that data resides in the appropriate CMDB tables, improving quality and automation. / The CSDM conceptual model includes domains such as Build, Design, and Consume.
+> **Erklärung:** CSDM provides a standardized framework for managing data across ServiceNow products, ensuring data quality and supporting various domains like Build, Design, and Consume.
+
+## Three Pillars of CMDB
+
+ServiceNow has created three "pillars to success" when it comes to operationalizing the CMDB: ingestion, governance, and insight.
+
+**Ingestion**
+The ingestion pillar is responsible for the continuous intake of data, which includes processes for merging, updating, and deleting data as necessary. This ensures that data from various sources is consolidated into a single, reliable model.
+
+**Governance**
+The governance pillar focuses on structuring CMDB management by establishing dedicated teams and clearly defined roles. It involves automating lifecycle processes, and aligning the CMDB with the CSDM to standardize service modeling.
+
+**Insight**
+The insight pillar focuses on establishing a framework for reporting and metrics. It emphasizes using analytics to transform datasets into actionable insights, supporting operational processes such as incident and change management.
+
+## Pillar One: CMDB Ingestion
+
+### CMDB Data Ingestion Tools
+
+The ingestion pillar is all about populating the CMDB and the ServiceNow tools that are used to automate the process of continuously bringing in CMDB data and ensuring the data is placed in the right tables.
+
+![Ingest the cmdb.png](Ingest%20the%20cmdb.png)
+
+**ServiceNow Discovery**
+
+Discovery is an automated solution that scans and detects all components within an organization's IT infrastructure on a scheduled basis. It plays an important role in ensuring accurate and up-to-date CMDB information is populated and continuously updated.
+
+![DiscoveryCommunicationsDia.png](DiscoveryCommunicationsDia.png)
+
+**1. Scan the network**
+Discovery can be set to run automatically at specific intervals or triggered by certain events. It scans designated IP address ranges to locate devices. Discovery uses port probes to detect open ports on devices. If no open ports are found for the configured probes, the discovery process halts.
+
+**2. Identify devices and applications**
+Discovery attempts to log in to devices using pre-configured credentials. Once logged in, it runs scripts to identify and extract data about each device, such as hostname, manufacturer, model, serial number, CPU, RAM, network adapters, disks, installed programs, and more.
+
+**3. Update the CMDB**
+Discovery adds devices and applications as configuration items in the CMDB. It identifies and creates relationships between systems, such as an application on one server using a database on another. Discovery updates existing CIs or creates new ones in the CMDB based on the gathered information.
+
+**Types of Discovery**
+
+- **Horizontal Discovery:** Scans the network to find computers and devices, populating the CMDB with the CIs it discovers.
+- **Top-down Discovery:** Used by Service Mapping; identifies and maps services by understanding the relationships and dependencies between applications and infrastructure components.
+
+**Service Mapping**
+
+![Service mapping.png](Service%20mapping.png)
+
+Service Mapping is an application that works with Discovery to find all application services within an organization and build a comprehensive map of all devices, applications, and configuration profiles used in these application services.
+
+**Agent Client Collector (ACC)**
+
+ACC is an agent-based solution designed to perform discovery and real-time monitoring of infrastructure components, including servers, cloud resources, and applications across an organization. ACC complements Discovery by finding IT resources without needing credentials or firewall exceptions. It gathers identification, status, health, and security data from devices, and collects performance metrics, logs, and configuration data from various endpoints.
+
+**IntegrationHub ETL**
+
+IntegrationHub ETL (extract, transform, load) is a ServiceNow Store app that can be used to create and manage ETL transform maps, which integrate third-party data into the CMDB or into non-CMDB tables.
+
+IntegrationHub ETL uses two key components for processing:
+
+- **Robust Transform Engine (RTE):** Transforms raw source data stored in staging tables by using ETL transform maps to convert the raw data into a format suitable for the CMDB.
+- **Identification and Reconciliation Engine (IRE):** Identifies whether a CI already exists in the CMDB and applies reconciliation rules to prevent duplicate CIs, maintaining data integrity.
+
+**Service Graph Connectors**
+
+Service Graph Connectors are pre-built integrations that facilitate the integration of third-party data sources with the CMDB. They are designed to ingest data from various domains such as security, servers, software, IoT (Internet of Things), and cloud services. These connectors use the Identification and Reconciliation Engine (IRE) and IntegrationHub ETL to ensure that data is accurately populated in the CMDB.
+
+**Import Sets and Transform Maps**
+
+- **Import sets:** Temporary staging tables that receive data from external sources. They allow data to be ingested without directly affecting the CMDB, providing a buffer to handle data in different formats or structures.
+- **Transform maps:** Once data is in the import sets, transform maps map and transform it into the appropriate CMDB tables and fields. They ensure data is correctly formatted and placed, reconciling differences from various sources to maintain data integrity and consistency.
+
+> **Quiz**
+> **Q:** Why is it important to use the Identification and Reconciliation Engine (IRE) with Service Graph Connectors?
+> **Options:**
+> - To create custom data formats
+> - To delete outdated data entries
+> - To convert raw data from staging tables into a format suitable for the CMDB
+> - To maintain the accuracy and integrity of populated data
+> **Correct:** To maintain the accuracy and integrity of populated data
+> **Erklärung:** The IRE helps maintain data accuracy and integrity during the integration process.
+
+## Pillar Two: CMDB Governance
+
+CMDB governance is about maintaining the health of the CMDB once data has been ingested using automated tools and processes.
+
+### CMDB Health Dashboard
+
+The CMDB Health dashboard provides administrators with a central location to view detailed health reports and remediate detected issues. These issues focus on the completeness, correctness, and compliance of CMDB data.
+
+![CMDB Health DB.png](CMDB%20Health%20DB.png)
+
+**Views**
+
+The CMDB Health Dashboard incorporates three views:
+
+- **Class view:** Default view, showing health reports for CIs and classes in the CMDB hierarchy.
+- **Service view:** Health reports for services with details for CIs per service.
+- **Health group view:** Health reports for CMDB groups of type Health with details for CIs per group.
+
+**KPI tiles**
+
+The Completeness, Correctness, and Compliance KPI tiles show aggregated health for CIs of the specified class, health group, or service:
+
+- Green: CIs that are compliant on all KPI metrics
+- Red: CIs that fail one or more metric
+
+Percentage is calculated as: number of healthy CIs / number of CIs evaluated.
+
+**Calculation details**
+
+Each KPI breaks down into sub-metrics:
+
+- Completeness: Recommended, Required
+- Correctness: Staleness, Orphan, Duplicate
+- Compliance: Audit
+
+**Metric details**
+
+The metric details displayed depend on the selected KPI tile. For example, the Correctness KPI tile shows a breakdown by: duplicate CIs, orphan CIs, and stale CIs.
+
+> **CMDB Health Dashboard scores and metrics are updated using scheduled jobs (All > Configuration > Health Preference > Scheduled Jobs).**
+
+### IRE and Duplicate CIs
+
+Duplicate CIs in the CMDB can have multiple causes: integrating data from multiple sources (import sets, REST, integrations), and manually creating CIs. The Identification and Reconciliation Engine (IRE) consolidates data from various sources to prevent duplication by uniquely identifying configuration items.
+
+**CI Identification rules**
+
+Identification rules are used to uniquely identify CIs in the CMDB. Each CMDB class can be associated with a single identification rule.
+
+**CI Reconciliation rules**
+
+Reconciliation rules fall into two categories:
+
+- **Static rules:** Used in conjunction with data refresh rules to determine reconciliation steps for a CI. They determine if, when, and by which discovery source a CI can be updated.
+- **Dynamic rules:** Use CMDB 360 data to choose a value (e.g., the largest reported value) for updating a CI. Requires enabling CMDB 360/Multisource CMDB.
+
+**Data refresh rules**
+
+Data refresh rules determine if a CI is stale (not updated for a specified amount of time) for a specific discovery source. Such CIs can then be updated by a lower-priority authorized discovery source.
+
+**Data source rules**
+
+Data source rules are created for discovery sources that are not trusted to create CIs but are trusted to update existing ones. Used in conjunction with static reconciliation rules; have no impact when dynamic rules are active.
+
+### De-duplication
+
+![CI Remediator.png](CI%20Remediator.png)
+
+**Duplicate CI Remediator**
+
+If the instance encounters duplicate CIs during identification and reconciliation, it groups each set of duplicates into a de-duplication task. The Duplicate CI Remediator is then used to step through the duplicate CI reconciliation process.
+
+![Duplicate CI Remediato.png](Duplicate%20CI%20Remediato.png)
+
+The remediation process allows for the merging of relationships and related items and the deletion of duplicate records.
+
+**Reclassification**
+
+During the CI identification process, a matched CI might need to be switched to another CI class. CIs can be automatically reclassified from one class to another, or can have a reclassification task generated with the option to manually review and reclassify the CI.
+
+### Lifecycle Management
+
+![Lifecycle management.png](Lifecycle%20management.png)
+
+Tools like Life Cycle Mapping and Data Manager can support this process.
+
+**Life Cycle Mapping**
+
+Use the Life Cycle Mapping module to specify how existing legacy status values should be converted to CSDM life-cycle value pairs (life cycle stage and life cycle stage status). These fields are recommended for organizations aiming to align more closely with CSDM best practices.
+
+**CMDB Data Manager**
+
+CMDB Data Manager is a framework for bulk management of CI life cycle operations. Large CMDBs can over time accumulate large amounts of stale CIs that impact overall performance. The CMDB Data Manager creates policies that automate and govern CI life cycle operations to help maintain the CMDB in a healthy and efficient operational state. A policy consists of:
+
+![data manager.png](data%20manager.png)
+
+- A policy type (e.g., attest, certify, retire, delete)
+- Filters used to apply conditions to select specific records from a table
+- Assignment type and target (group/user)
+- The timeframe for task completion once the policy has run and identified records that need to be updated
+
+> **A scheduled job processes published Data Manager policies and policy tasks are assigned as set in the policy. Individuals or group members the task is assigned to locate their tasks in the CMDB Workspace.**
+
+> **Quiz**
+> **Q:** Which tools can assist with identifying and preventing duplicate CI data? (Select two)
+> **Options:**
+> - CMDB Health Dashboard > Correctness KPI
+> - Life cycle mapping
+> - Identification and Reconciliation Engine
+> - CMDB Health Dashboard > Completeness KPI
+> **Correct:** CMDB Health Dashboard > Correctness KPI, Identification and Reconciliation Engine
+> **Erklärung:** The CMDB Health Dashboard > Correctness KPI identifies duplicate CIs, while the Identification and Reconciliation Engine prevents duplicates.
+
+## Pillar Three: CMDB Insight
+
+ServiceNow provides several robust solutions to aid and automate the collection of data into the CMDB, supporting the insight pillar to realize value from a healthy CMDB.
+
+### CMDB Query Builder
+
+The CMDB Query Builder offers a drag-and-drop interface for constructing complex queries across both CMDB classes and non-CMDB tables, without coding. It enables users to query configuration items and their relationships, and provides options to save, schedule, and export queries in various formats. It also supports report generation for more informed decision-making.
+
+![Query builder.png](Query%20builder.png)
+
+### Unified Map
+
+![Unified map.jpg](Unified%20map.jpg)
+
+The ServiceNow Unified Map is a feature within the CMDB Workspace that merges the functionalities of the legacy Dependency Map and Service Map into a single interface. It provides a visual representation of the relationships between CIs within an IT infrastructure.
+
+Useful for understanding dependencies of an outage or interruption, and assessing the potential impact of changes.
+
+### CMDB and CSDM Data Foundations Dashboards
+
+The CMDB and CSDM Foundations Dashboards ensure the CMDB is well-structured and aligned with the CSDM framework. They provide a comprehensive view and insights to help maintain and improve configuration management processes, available via the Management tab of the CMDB Workspace.
+
+> **The CSDM and CMDB Data Foundations Dashboards (sn_getwell) plugin must be installed to use this feature.**
+
+![data foundations.png](data%20foundations.png)
+
+- **CSDM dashboard:** indicators grouped by maturity level (Foundation, Crawl, Walk, Run, Fly)
+- **CMDB dashboard:** indicators grouped by Best Practices, Customizations, Data Management Practices, and ITSM Processes
+
+> **Refer to [CMDB and CSDM Data Foundations Dashboards Indicators](https://www.servicenow.com/docs/bundle/xanadu-now-intelligence/page/use/dashboards/reference/cmdb-csdm-indicators.html) for a comprehensive list and explanation of the indicators used on the dashboards.**
+
+> **Quiz**
+> **Q:** Which tool would be most beneficial for a Service Desk Agent seeking to understand the downstream impacts of an outage on a CI?
+> **Options:**
+> - CMDB Data Foundations Dashboard
+> - CMDB Query Builder
+> - CMDB Workspace
+> - Unified Map
+> - CMDB Health Dashboard
+> **Correct:** Unified Map
+> **Erklärung:** The Unified Map provides a holistic view of IT infrastructure and relationships that helps in understanding the impact of incidents.
+
+## Align the CMDB with CSDM
+
+### Data Modeling for Alignment
+
+As a CTA, you take a lead role in aligning to the Common Service Data Model. This requires bringing people together to gather data, whether the organization is just starting out with ServiceNow or has been on the platform for some time. These steps ensure a thorough approach to data modeling for CMDB-CSDM alignment:
+
+![DM process.png](DM%20process.png)
+
+**Prepare**
+
+Determine the implementation approach: service-focused or application (IT)-focused. For prior implementations, ensure alignment with previous efforts. Assign appropriate resources:
+
+- Enterprise architect
+- CMDB manager
+- Process owners
+- ServiceNow product owner
+- ServiceNow developer or administrator
+
+For legacy deployments: map and migrate existing life cycle values to align with standard CSDM values, and enable the necessary plugins.
+
+**Gather data**
+
+Depends on the chosen approach:
+
+- **Application-focused:** Collect a comprehensive list of business applications and their corresponding production installs.
+- **Service-focused:** Gather a list of services along with the applications used to deliver them, particularly those necessary for day-one service management readiness.
+
+For legacy implementations: run a CMDB Health Scan to assess data quality, use scripts to evaluate the impact of data remediation, and implement necessary corrections.
+
+**Model data**
+
+- **Application-focused:** Use the [Data Modeling Workbook](https://learning.servicenow.com/nowcreate/en/pages/assets?id=nc_asset&nc_ai_search=true&asset_id=abda54d987cbd9d4046fff38dabb351d&sys_id=36db3af2db954dd00c912b691396194c&table=x_snc_accel_asset&searchTerm=data%20modeling%20workbook) along with data diagrams to define and document application data structures and visualize relationships and dependencies.
+- **Service-focused:** The customer provides a Service Taxonomy to guide the effort. Services are related to supporting applications. The Data Modeling Workbook is used especially when a large number of services are already defined. The Service Builder tool can be used to create and maintain formal service definitions.
+
+Regardless of approach: develop processes and governance structures to ensure long-term sustainability, accuracy, and alignment of modeled data.
+
+**Enter data**
+
+Use import sets to load CSDM-related data types: Business Applications, Application Services, Business Services, Technical Services, Business Service Offerings, Technical Service Offerings, and key relationship data (Consumes, Contains, Depends on). Manual entry is used for cases requiring individual validation or not suited for bulk loading. Review and test data entry processes to ensure accuracy, consistency, and completeness.
+
+**Maintain/Use data**
+
+Use key tools to monitor and manage data integrity: Dashboards, Data Foundations, CMDB Health, CMDB Workspace, and Data Manager. Create reports and dashboards for operational visibility. Train data users and owners on how to use, select, maintain, update, and manage the life cycle of data elements (creating or retiring as needed).
+
+### CI Relationships in the CSDM
+
+During the Enter data stage, the results of data modeling (CSDM-related data types and their relationships) are imported into the CMDB. Correct relationships between CIs and objects in the CSDM conceptual model are essential. Many ServiceNow features and products (e.g., Enterprise Architecture, formerly Application Portfolio Management) rely on these relationships to function properly.
+
+![csdm-relationships.png](csdm-relationships.png)
+
+When setting up infrastructure CIs, the relationships typically created by Service Mapping and Discovery are the standard. If creating relationships manually, ensure they align with how Discovery would normally handle them.
+
+Keep in mind:
+
+- Not every object in the CSDM conceptual model is represented by a CMDB table
+- Not all objects have built-in relationships
+- You may need to create some essential relationships yourself to ensure proper functionality
+
+> **Refer to [How CSDM concepts map to CMDB tables](https://www.servicenow.com/docs/bundle/xanadu-servicenow-platform/page/product/csdm-implementation/concept/csdm-to-cmdb-mapping.html) in the ServiceNow documentation.**
+
+> **Quiz**
+> **Q:** In the Prepare stage of the data modeling process, what is one of the key responsibilities?
+> **Options:**
+> - Create data certification schedules
+> - Use Data Modeling Workbook
+> - Determine the implementation approach
+> - Activate import sets
+> **Correct:** Determine the implementation approach
+> **Erklärung:** In the Prepare stage, it must be decided whether the implementation will be service-focused or application-focused.
+
+## Key Takeaways — CMDB and CSDM
+
+1. **Understand the CSDM framework:** It is a blueprint for managing ServiceNow applications effectively and is foundational to getting continued value from an implementation.
+2. **Use and promote CMDB tools effectively:** Tools like the CMDB Health Dashboard, CMDB Query Builder, and Data Manager support data quality and help customers maintain CMDB governance and insight.
+3. **Apply structured data modeling processes:** Tailor approaches based on whether the focus is on services or applications, and use the Data Modeling Workbook to ensure effective CMDB alignment.
+
+**Additional Resources**
+
+- [CSDM Data Model Examples](https://mynow.servicenow.com/now/best-practices/assets/csdm-data-model-examples) (PPT)
+- [Maintain a healthy CMDB](https://mynow.servicenow.com/now/best-practices/assets/maintain-a-healthy-cmdb) (PDF)
+- [CMDB Governance](https://mynow.servicenow.com/now/best-practices/assets/cmdb-governance) (PPT)
+- [CSDM 5 Whitepaper](https://www.servicenow.com/community/common-service-data-model/csdm-5-finally-get-the-csdm-5-white-paper-here/ta-p/3254967) (Community article)
+- [CSDM 101: Everything you need to know](https://www.youtube.com/watch?v=hANONH1c1vQ) (Video)
 
