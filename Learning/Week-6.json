@@ -1,0 +1,226 @@
+[
+  {
+    "module": "Week-6 UX Fundamentals",
+    "type": "mc",
+    "q": "Which design thinking component allows you to put your assumptions aside and understand the user's problems, pain points, and aspirations?",
+    "options": ["Brainstorming", "Empathy", "Validation", "Ideation"],
+    "correct": ["Empathy"],
+    "explanation": "Empathy is crucial to any human-centered design process as it allows us to set aside our own assumptions and gain insight into users and their needs."
+  },
+  {
+    "module": "Week-6 UX Fundamentals",
+    "type": "mc",
+    "q": "What is a leading practice for designing clear and effective user interfaces?",
+    "options": [
+      "Use a varied color palette to create visual variety",
+      "Keep layouts consistent and focus on essential elements only",
+      "Avoid providing feedback to keep the interface uncluttered",
+      "Ensure interfaces are sparse and contain lots of white space"
+    ],
+    "correct": ["Keep layouts consistent and focus on essential elements only"],
+    "explanation": "Clear and effective interfaces provide a consistent experience that does not overwhelm users with unnecessary options."
+  },
+  {
+    "module": "Week-6 Now Experience",
+    "type": "mc",
+    "q": "What is a key benefit of using UI Builder?",
+    "options": [
+      "It automatically generates scripts for all use cases",
+      "It is only accessible via App Engine Studio to developers",
+      "It allows drag-and-drop creation of pages using components",
+      "It does not require any understanding of web components"
+    ],
+    "correct": ["It allows drag-and-drop creation of pages using components"],
+    "explanation": "UI Builder supports drag-and-drop development of component-based pages."
+  },
+  {
+    "module": "Week-6 Design System",
+    "type": "mc",
+    "q": "When using a card component, what is a leading practice for displaying content?",
+    "options": [
+      "Display as much detail as possible for transparency",
+      "Keep content concise and scannable",
+      "Use long labels for clarity",
+      "Use multiple highlighted values per card for emphasis"
+    ],
+    "correct": ["Keep content concise and scannable"],
+    "explanation": "Cards should be minimal and easy to scan to support user decisions."
+  },
+  {
+    "module": "Week-6 UX Design Considerations",
+    "type": "mc",
+    "q": "Which of the following enhances form usability for diverse user audiences? Select all that apply.",
+    "options": [
+      "Logical form layout",
+      "Effective use of color",
+      "Using technical field names visible to users",
+      "Clear field labelling",
+      "Complex dropdown navigation",
+      "Logical groupings of fields in sections"
+    ],
+    "correct": ["Logical form layout", "Effective use of color", "Clear field labelling", "Logical groupings of fields in sections"],
+    "explanation": "Designing for usability involves clear, accessible, and well-structured interfaces. Complex dropdowns and exposing technical field names negatively affect the experience."
+  },
+  {
+    "module": "Week-6 Content Strategy",
+    "type": "mc",
+    "q": "What are the components that can help you create a successful content strategy?",
+    "options": ["Content-oriented", "Solution-oriented", "Task-oriented", "People-oriented"],
+    "correct": ["Content-oriented", "People-oriented"],
+    "explanation": "Content-oriented and people-oriented components can help you create a successful content strategy."
+  },
+  {
+    "module": "Week-6 Content Organization",
+    "type": "mc",
+    "q": "Which of the following organization schemes categorizes information in a way that is specific to or defined by the organization or industry?",
+    "options": ["Subjective", "Exact", "Matrix", "Hierarchical"],
+    "correct": ["Subjective"],
+    "explanation": "Subjective organization schemes categorize information in a way specific to the organization or industry. Though difficult to design, they are more useful than exact schemes."
+  },
+  {
+    "module": "Week-6 Content Organization",
+    "type": "mc",
+    "q": "What are the drawbacks of deep structures? Select all that apply.",
+    "options": [
+      "Users may have to click through too many levels to find information",
+      "Important content can become buried and harder to discover",
+      "It results in inconsistent operational and maintenance costs",
+      "It may require long and confusing menus",
+      "Users may become frustrated or abandon the task",
+      "They make it harder to apply alphabetical sorting"
+    ],
+    "correct": [
+      "Users may have to click through too many levels to find information",
+      "Important content can become buried and harder to discover",
+      "Users may become frustrated or abandon the task"
+    ],
+    "explanation": "Deep structures bury information beneath too many layers, burden users to navigate through several levels, and as a result users may abandon the task."
+  },
+  {
+    "module": "Week-6 Service Portal",
+    "type": "mc",
+    "q": "What can users access from a portal page?",
+    "options": ["Applications", "Information", "Services", "Tasks", "All of the above"],
+    "correct": ["All of the above"],
+    "explanation": "A Service Portal is a collection of pages offering users an engaging way to access applications, information, services, and tasks."
+  },
+  {
+    "module": "Week-6 Search Patterns",
+    "type": "mc",
+    "q": "Your customer wants the user to complete information using checkboxes to start their search. What search pattern should they use?",
+    "options": ["Exact", "Pagination", "Parametric", "Auto-suggest"],
+    "correct": ["Parametric"],
+    "explanation": "The parametric search pattern asks users to make selections (checkboxes, dropdowns) to start their search. Can return very few or no results depending on the combination of parameters."
+  },
+  {
+    "module": "Week-6 Widgets",
+    "type": "mc",
+    "q": "Which of the following are true about widgets? Select all that apply.",
+    "options": [
+      "Widgets execute a specified behavior on a page",
+      "Widgets display content on pages",
+      "Widgets perform one function",
+      "The same widget can be added once per page",
+      "A widget is technically an AngularJS Directive"
+    ],
+    "correct": [
+      "Widgets execute a specified behavior on a page",
+      "Widgets display content on pages",
+      "Widgets perform one function",
+      "A widget is technically an AngularJS Directive"
+    ],
+    "explanation": "Widgets execute behavior, display content, perform one function, and are AngularJS directives. The same widget can be added multiple times per page."
+  },
+  {
+    "module": "Week-6 Portal Tools",
+    "type": "mc",
+    "q": "Which of the following provides a list of all widgets included on all Service Portal pages?",
+    "options": ["User Experience Analytics", "Log entries", "Portal analyzer", "Google analytics"],
+    "correct": ["Portal analyzer"],
+    "explanation": "The Portal Analyzer provides a list of all widgets included on all Service Portal pages."
+  },
+  {
+    "module": "Week-6 UX Fundamentals",
+    "type": "what",
+    "q": "What are the three phases of Design Thinking?",
+    "a": ["Discover: understand the problem through empathy and user observation", "Ideate: generate ideas and validate with users to narrow to the best solution", "Deliver: rapid iteration — prototype, test, refine, launch"]
+  },
+  {
+    "module": "Week-6 Interaction Design",
+    "type": "what",
+    "q": "What is Miller's Law and why does it matter for UX design?",
+    "a": "People can hold 5-9 items in short-term memory. Chunk information into groups of 7 (±2) to support learnability and reduce cognitive load."
+  },
+  {
+    "module": "Week-6 Interaction Design",
+    "type": "what",
+    "q": "What is Tesler's Law (Conservation of Complexity)?",
+    "a": "Remove as much complexity as possible from the user and build it into the system — but things can only be simplified to a certain point before they stop functioning."
+  },
+  {
+    "module": "Week-6 Interaction Design",
+    "type": "what",
+    "q": "What is Poka-Yoke in UX design?",
+    "a": "Mistake-proofing: place constraints that force users to correct their behavior before they can proceed with an action."
+  },
+  {
+    "module": "Week-6 Interaction Design",
+    "type": "diff",
+    "q": "What is the difference between an affordance and a signifier in interaction design?",
+    "a": "An affordance is a visual clue (color, shape, size) suggesting how an element works. A signifier provides explicit information about what will happen before the user acts — e.g. a button label or instructions before form submission."
+  },
+  {
+    "module": "Week-6 Service Portal",
+    "type": "what",
+    "q": "What is the default portal URL suffix in the ServiceNow base system?",
+    "a": "/esc (Employee Center)"
+  },
+  {
+    "module": "Week-6 Widgets",
+    "type": "what",
+    "q": "What do the four widget colors in the Widget Diagnostic Tool indicate?",
+    "a": ["Green: base system widget, unmodified", "Yellow: cloned widget", "Blue: new custom widget", "Red: customized base widget (code, schema, or dependencies changed)"]
+  },
+  {
+    "module": "Week-6 Widgets",
+    "type": "diff",
+    "q": "What is the difference between HTML, server scripts, and client scripts in a widget?",
+    "a": ["HTML: renders the view, binds client script variables, gathers user input", "Server scripts: load initial data, run server-side queries, send record data to the client controller", "Client scripts: map server data to client objects, process data before rendering, pass user input back to server"]
+  },
+  {
+    "module": "Week-6 Content Organization",
+    "type": "diff",
+    "q": "What is the difference between exact and subjective organization schemes?",
+    "a": "Exact schemes (alphabetical, chronological, geographical) divide content into clear, mutually exclusive categories — easy to maintain but require users to know where something fits. Subjective schemes (topic, task, audience, metaphor) are specific to the organization or industry — harder to design but more useful to users."
+  },
+  {
+    "module": "Week-6 Content Labels",
+    "type": "what",
+    "q": "What are the three types of navigation systems and when is each used?",
+    "a": ["Structural: follows site hierarchy, enables movement to pages above or below current page", "Associative: links related content regardless of location — often embedded in text, easy to miss", "Utility: site tools outside the main hierarchy — site map, help, login/logout, font size"]
+  },
+  {
+    "module": "Week-6 Portal Tools",
+    "type": "what",
+    "q": "What are the key limitations of the Widget Diagnostic Tool?",
+    "a": ["Cannot fix or revert code directly — must navigate to the widget record", "Navigating to another portal page disables the tool", "Only shows first-level widget dependencies", "Color-based categorization is not accessible for visually impaired users", "Cannot track deleted widget dependencies"]
+  },
+  {
+    "module": "Week-6 Portal Tools",
+    "type": "what",
+    "q": "What data does the Portal Analyzer store, and where?",
+    "a": "Stored in sp_portal_analyzer. Fields: Page, Page ID, Widget, Widget ID, Status (OOTB/Cloned/Customized/New), Page views, User count. Running the job deletes and replaces all existing records."
+  },
+  {
+    "module": "Week-6 UX Design Considerations",
+    "type": "why",
+    "q": "Why should you use GlideAJAX instead of synchronous server calls in client scripts?",
+    "a": "GlideAJAX makes fast, dynamic, asynchronous calls to the server without blocking the UI. Synchronous calls freeze the browser while waiting for a response, degrading the user experience."
+  },
+  {
+    "module": "Week-6 Service Portal",
+    "type": "why",
+    "q": "Why is Universal Request valuable for Employee Experience (ESM)?",
+    "a": "It provides a single entry point for all service requests across IT, HR, Facilities, and Legal. The system routes automatically and handles cross-department handovers invisibly — employees never need to re-explain their issue or guess which department to contact."
+  }
+]

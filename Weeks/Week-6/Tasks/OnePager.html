@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlobalFin: Week 6</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #e8e4df;
+    color: #1a1a1a;
+    font-size: 13px;
+    padding: 24px 20px;
+  }
+
+  .page { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+
+  .card {
+    background: #fff;
+    padding: 18px 20px;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+  }
+
+  .label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+
+  .divider { width: 28px; height: 2px; background: #1a1a1a; margin: 8px 0 12px; }
+
+  /* Row 1 */
+  .row1 { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 10px; }
+
+  .card-company .name {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .card-company .sub { font-size: 11px; color: #777; margin-top: 5px; }
+  .card-company .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+  .card-company .tag {
+    font-size: 9px;
+    font-weight: 600;
+    border: 1px solid #1a1a1a;
+    padding: 2px 7px;
+    letter-spacing: 0.03em;
+  }
+
+  .card ul { list-style: none; }
+  .card ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  .card ul li:last-child { border-bottom: none; }
+
+  .card ol { padding-left: 15px; }
+  .card ol li {
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 12px;
+    line-height: 1.35;
+    color: #333;
+  }
+  .card ol li:last-child { border-bottom: none; }
+  .card ol li strong { color: #1a1a1a; }
+
+  /* Row 2 */
+  .row2 { display: grid; grid-template-columns: 1fr 190px 1fr 190px; gap: 10px; }
+
+  /* Row 3 */
+  .row3 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .items { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 2px; }
+
+  .item {
+    background: #f7f7f7;
+    padding: 9px 10px;
+    border-left: 2px solid #1a1a1a;
+  }
+  .item .iname {
+    font-weight: 700;
+    font-size: 11px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .item .idesc { font-size: 10px; color: #777; line-height: 1.3; }
+
+  .badge {
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .badge-sn { background: #efefef; color: #444; border: 1px solid #d0d0d0; }
+  .badge-ux { background: #1a1a1a; color: #fff; }
+
+  /* UX Chain */
+  .ux-chain { display: flex; align-items: flex-start; gap: 6px; }
+  .ux-item { flex: 1; }
+  .ux-term { font-size: 22px; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+  .ux-role { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #555; margin: 3px 0 5px; }
+  .ux-desc { font-size: 11px; color: #777; line-height: 1.35; }
+  .ux-arrow { font-size: 18px; color: #ccc; padding-top: 2px; flex-shrink: 0; align-self: center; }
+
+  /* Deliverable links */
+  .deliverable-link { color: #1a1a1a; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .deliverable-link:hover { color: #0057a8; }
+  .deliverable-pending { color: #bbb; font-weight: 700; }
+  .deliverable-status { display: inline-block; font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #bbb; border: 1px solid #ddd; padding: 1px 5px; margin-left: 5px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ROW 1: COMPANY / PAIN / FOCUS -->
+  <div class="row1">
+    <div class="card card-company">
+      <div class="label">CTA Week 6: User Experience</div>
+      <div class="name">GlobalFin<br>Services</div>
+      <div class="divider"></div>
+      <div class="sub">Multinational financial services. ServiceNow adoption ongoing.</div>
+      <div style="font-size:9px;color:#aaa;margin-top:8px;letter-spacing:0.03em;">Group 10 · Cooking Architects</div>
+      <div class="tags">
+        <span class="tag">12,000 Employees</span>
+        <span class="tag">IT</span>
+        <span class="tag">HR</span>
+        <span class="tag">Facilities</span>
+        <span class="tag">Procurement</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Approach</div>
+      <div class="divider"></div>
+      <div class="ux-chain">
+        <div class="ux-item">
+          <div class="ux-term">UI</div>
+          <div class="ux-role">Agent &amp; Requester Interface</div>
+          <div class="ux-desc">Workspace + Service Portal, the visual layer we design and optimize</div>
+        </div>
+        <div class="ux-arrow">→</div>
+        <div class="ux-item">
+          <div class="ux-term">UX</div>
+          <div class="ux-role">How they experience it</div>
+          <div class="ux-desc">Less toggling, faster lookup, one pane. Friction removed.</div>
+        </div>
+        <div class="ux-arrow">→</div>
+        <div class="ux-item">
+          <div class="ux-term">CX</div>
+          <div class="ux-role">Business outcome</div>
+          <div class="ux-desc">Higher adoption, fewer complaints, visible ROI for GlobalFin</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">CTA Deliverables</div>
+      <div class="divider"></div>
+      <ol>
+        <li><a class="deliverable-link" href="Workspace_Mockup.html" target="_blank">Workspace Mockup</a>: Now Experience Framework for IT analysts</li>
+        <li><span class="deliverable-pending">Portal Mockup</span><span class="deliverable-status">Pending</span>: Service Portal tools for employee self-service</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ROW 2: CHALLENGES -->
+  <div class="row2">
+    <div class="card">
+      <div class="label">IT Analyst: Challenges</div>
+      <div class="divider"></div>
+      <ul>
+        <li>No central overview of assigned cases and tickets</li>
+        <li>No SLA / due date visibility to prioritize work</li>
+        <li>Excessive page toggling to access information</li>
+        <li>No user-centric ticket view</li>
+      </ul>
+    </div>
+    <div class="card card-company">
+      <div class="label">Tool</div>
+      <div class="name" style="font-size:16px;">UI<br>Builder</div>
+      <div class="divider"></div>
+      <div class="sub">Now Experience Framework, WYSIWYG workspace builder</div>
+      <div class="tags" style="margin-top:8px;">
+        <span class="tag">Workspace</span>
+        <span class="tag">Now Experience</span>
+        <span class="tag">Drag &amp; Drop</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">Employee / Requester: Challenges</div>
+      <div class="divider"></div>
+      <ul>
+        <li>Service requests hard to find</li>
+        <li>No intuitive request status tracking</li>
+        <li>Knowledge articles hard to browse</li>
+        <li>No unified view of tasks and submitted tickets</li>
+      </ul>
+    </div>
+    <div class="card card-company">
+      <div class="label">Tool</div>
+      <div class="name" style="font-size:16px;">Service<br>Portal<br>Designer</div>
+      <div class="divider"></div>
+      <div class="sub">Native SP configuration tool for pages, themes &amp; widgets</div>
+      <div class="tags" style="margin-top:8px;flex-direction:column;align-items:flex-start;">
+        <span class="tag">Service Portal</span>
+        <span class="tag">Widgets</span>
+        <span class="tag">No-Code</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 3: SOLUTION ELEMENTS -->
+  <div class="row3">
+    <div class="card">
+      <div class="label">Workspace Elements: Now Experience Framework</div>
+      <div class="divider"></div>
+      <div class="items">
+        <div class="item">
+          <div class="iname">Record List <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">Central sortable/filterable ticket view</div>
+        </div>
+        <div class="item">
+          <div class="iname">Highlighted Value <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">KPI widgets: Open / At Risk / Breached / Resolved</div>
+        </div>
+        <div class="item">
+          <div class="iname">Contextual Sidebar <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">All tickets for a specific user in one view</div>
+        </div>
+        <div class="item">
+          <div class="iname">Workspace Tabs <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">Incident / Case / Change, no more toggling</div>
+        </div>
+        <div class="item">
+          <div class="iname">Ribbon <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">Contextual info about the open record at a glance</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">Portal Elements: Service Portal Tools</div>
+      <div class="divider"></div>
+      <div class="items">
+        <div class="item">
+          <div class="iname">Employee Center <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">Single portal entry point /esc for all departments</div>
+        </div>
+        <div class="item">
+          <div class="iname">Homepage Search Widget <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">Faceted search with filters for fast lookup</div>
+        </div>
+        <div class="item">
+          <div class="iname">My Requests Widget <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">Open/closed requests with status at a glance</div>
+        </div>
+        <div class="item">
+          <div class="iname">KB Categories Widget <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">Category cards for intuitive article browsing</div>
+        </div>
+        <div class="item">
+          <div class="iname">Simple List Widget <span class="badge badge-sn">Config</span></div>
+          <div class="idesc">Configured: Assigned to me / Submitted by me in one pane</div>
+        </div>
+        <div class="item">
+          <div class="iname">Universal Request <span class="badge badge-sn">SN</span></div>
+          <div class="idesc">Auto-routes to correct dept, one entry point</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -433,3 +433,595 @@ Universal Request improves UX by streamlining how employees report and resolve i
 - [UI Builder Fundamentals](https://learning.servicenow.com/lxp/en/now-platform/ui-builder-fundamentals-washington?id=learning_course_prev&course_id=be3c198e97bf5ed4a916b4be2153af4b) — ServiceNow University course
 - [Introduction to External Component Development](https://learning.servicenow.com/lxp/en/now-platform/introduction-to-external-component-development?id=learning_course_prev&course_id=5343d47d873f16d8e6ba74c7dabb3500) — ServiceNow University course
 - [Next Experience Components](https://developer.servicenow.com/dev.do#!/reference/next-experience/components) — ServiceNow Developer site
+
+## ServiceNow Portal overview
+
+A well-designed portal helps users ask questions and find the answers they need, complete tasks assigned to them with ease, and submit requests for the goods and services they need. A Service Portal offers an alternative user experience to the standard platform UI.
+
+![Serviceportals.jpg](Serviceportals.jpg)
+
+### What a Service Portal Is
+
+- A collection of pages offering users an engaging way to access applications, information, services, and tasks
+- A visual layer that transforms the look and feel of ServiceNow and brings information together in a uniform way
+- Easy to use on any device and easy to configure, customize, and extend
+
+### Unsupported Features in ServiceNow Portals
+
+Elements of the portal design platform, such as settings, portals, pages, and widgets, are not domain-separated. However, widget data is displayed when based on the appropriate domain. To provide different experiences, administrators should create separate service portals, each with unique URLs, and redirect users accordingly.
+
+### Portal Administrators and Developers
+
+Portals were designed so that even users with limited coding ability or limited knowledge of the platform UI can set up a portal.
+
+Users with an understanding of the ServiceNow platform can create portals, set up URL redirects, and view all portal components in tables. Most configuration takes place on the portal configuration page, but in specific situations administrators may need to perform additional setup directly in the platform.
+
+#### No-code administrators
+
+**Role:** Portal Administrators
+
+- Comfortable performing drag-and-drop web development
+- Easily apply company branding
+
+#### Low-code administrators
+
+**Role:** ServiceNow Administrators
+
+- Comfortable modifying existing portal elements, activating plugins, and configuring ServiceNow
+- Experience with HTML, CSS, and core Bootstrap concepts
+
+#### Pro-code administrators
+
+**Role:** ServiceNow Developers
+
+- Comfortable creating new portal elements using AngularJS and ServiceNow APIs
+- Experience with HTML, CSS, Bootstrap, ServiceNow scripting, JavaScript, and AngularJS
+
+### Out-of-the-box Portals
+
+There are numerous portals available out of the box. Check existing options and available plugins before building a new one. The following table outlines some out-of-the-box portals and the suffixes used to access them.
+
+| Portal name | URL suffix |
+| --- | --- |
+| CAB Workbench | cab |
+| Mobile Employee Service Portal | mesp |
+| Knowledge Portal | kb |
+| Customer Support | csm |
+| Vendor Portal - Scoped | svdp |
+| Government Service Portal | gsp |
+| Benchmarks | benchmarks |
+| Employee Center | esc |
+| Service Portal | sp |
+| Instance Security Center | isc |
+| Workplace Services | ws |
+| SP Configuration | sp_config |
+| Service Workspace Portal | swp |
+
+> **Note: The portals available on an instance depend on the plugins installed. The full list of portals available on an instance and the suffixes used to access them can be located by going to All > Service Portal > Portals.**
+
+> **Access ServiceNow University for additional training on Service Portal: Service Portal Fundamentals and Service Portal Advanced On Demand.**
+
+https://learning.service-now.com/lxp?id=learning_course_prev&course_id=ae383a8cdb5eff40de3cdb85ca9619bd
+https://learning.servicenow.com/lxp/en/now-platform/service-portal-advanced-on-demand-washington?id=learning_course_prev&course_id=6e27b6eb473822d09844c1c4f16d437c&s=1&ssa=3
+
+### Employee Center and Employee Center Pro
+
+Careful consideration should be given to the design of the Employee Center portal to help employees seek assistance, self-serve through the knowledge base, and complete tasks, approvals, and other to-do items.
+
+Employee Center provides an intuitive and user-friendly interface to access employee-related services offered by an organization. The Employee Center portal enables organizations to scale service solutions across departments such as IT, HR, Workplace, Legal, and Procurement through digital workflows.
+
+Employee Center Pro is a premium licensed extension of Employee Center that adds enhanced capabilities for communication, engagement, analytics, deeper integrations, and targeted content.
+
+Employees can:
+
+- Access information and services organized within knowledge bases, catalogs, forums, and Virtual Agent
+- Access employee self-service anytime and anywhere through responsive design for PC, laptop, tablet, and mobile devices
+- Engage in case management by opening, monitoring, and acting on cases and tasks
+
+Employers can:
+
+- Share information on organizational imperatives, announcements, and targeted campaigns
+- Assign required actions through to-dos (approvals and other tasks)
+- Engage co-workers in community forums and discussions
+
+### Employee Center Pro Overview
+
+Watch the video to learn more about ServiceNow Employee Center Pro.
+
+https://www.youtube.com/watch?v=P9zue5YIdwM
+
+> **Quiz**
+> **Q:** What can users access from a portal page?
+> **Options:**
+> - Applications
+> - Information
+> - Services
+> - Tasks
+> - All of the above
+> **Correct:** All of the above
+> **Erklärung:** Service Portal is a collection of pages offering users an engaging way to access applications, information, services, and tasks.
+
+## Portal content architecture
+
+> “When a user has an easy time finding what they are looking for, you reduce the total amount of effort they need to invest interacting with a product.”
+>
+> ~ Adobe UX Specialist
+
+### Content and information architecture
+
+Content architecture is a UX discipline that focuses on organizing and labeling content so it is easy to find, understand, and use. It combines strategy and structure to present content in a logical and user-friendly way. Closely related to Information Architecture (IA), it supports users in locating information and completing tasks efficiently.
+
+Both content architecture and information architecture ensure that the right content is available in the right place, at the right time, in the right format, for the right audience.
+
+### Users
+
+- Identify your audience and understand their needs, behaviors, and experiences before structuring self-service applications
+- Let user insights guide decision-making throughout the design process
+- Conduct thorough research and usability testing to observe how people interact with self-service tools
+- Use these findings to optimize application structure and functionality
+
+### Content
+
+- Recognize that content is the core of every knowledge base, service portal, and service catalog
+- Provide meaningful content users can read, access, or use to complete tasks and find information
+- Assess the nature, volume, and expected growth of content to guide design and maintenance
+- Structure applications so users can easily interact with content, stay engaged, and increase conversions
+- Deliver content users find valuable and make it easy to locate through strong organization and search
+- Prevent frustration by making key information immediately accessible, otherwise users may abandon the portal
+- Build a strong information architecture to support structure and usability across knowledge bases, portals, and catalogs
+
+### Context
+
+- Define the context in which information is provided to the audience
+- Consider business goals, vision, mission, and target market when planning content and structure
+- Account for influencing factors such as funding, politics, culture, technology, available resources, and constraints
+- Use this context to guide how self-service applications are structured and delivered
+
+### Content strategy basics
+
+Content strategy focuses on the planning, creation, delivery, and governance of content. The goal is to create meaningful, cohesive, engaging, and sustainable content that is well-structured and easy to find. It also helps identify what already exists, what should be created, and why it should be created.
+
+Review guidelines that contribute to strong content-oriented and people-oriented components.
+
+#### Content-oriented components
+
+**Identify goals and substance**
+
+Focuses on what content is required to successfully execute an organization's core strategy. It includes messaging architecture, intended audience(s), and voice and tone.
+
+**Determine structure**
+
+Focuses on how content is prioritized, organized, and accessed. Consider the content itself, including mapping messages to content, content bridging, and creating detailed page tables.
+
+#### Content lifecycle overview
+
+Good content architecture starts with thorough user research. Identify your audience early and involve users from the beginning. Continually maintain and update content based on evolving user needs.
+
+After listing all content, prioritize and group it logically. One effective technique for early insights is card sorting, introduced in User Experience Part 1. Card sorting helps design and evaluate content architecture by showing how users naturally categorize content.
+
+During a session, participants group topics in ways that make sense to them and may suggest useful labels. This supports the structure of the knowledge base, service portal, and service catalog so they align with user thinking. Card sorting is one of many research methods that help build user-informed architecture.
+
+#### People-oriented components
+
+**Outline roles and workflow**
+
+Focuses on how people manage and maintain content daily, including roles, tasks, and tools required across the content lifecycle.
+
+**Identify policies and standards**
+
+Focuses on the policies, standards, and guidelines that apply to content and its lifecycle, as well as how the organization sustains and evolves its content strategy.
+
+### Content lifecycle
+
+#### Step 1: Audit and analysis
+
+- **Conduct content stakeholder interviews:** Engage key stakeholders to understand strategic goals, content requirements, and user expectations.
+- **Perform competitive analysis:** Study how competitors structure and present similar content across websites, portals, knowledge bases, and service catalogs to identify best practices, trends, and usability standards.
+- **Analyze and evaluate the current content environment:** Audit existing content across platforms to assess quality, relevance, accuracy, and usability. Identify outdated information, duplication, and structural inconsistencies.
+
+#### Step 2: Strategy
+
+- **Define ownership and governance:** Establish clear ownership for each content area or topic to ensure accountability.
+- **Develop and align taxonomy:** Create a structured taxonomy that reflects how users search and navigate content.
+- **Establish content workflow and production process:** Design a repeatable and efficient workflow for planning, creating, reviewing, and publishing content.
+- **Create a sourcing and maintenance plan:** Identify reliable internal and external content sources and define ongoing update plans.
+- **Define voice, tone, and brand guidelines:** Articulate the desired voice and tone for consistent user experience across channels.
+- **Set success metrics and evaluation criteria:** Determine how effectiveness is measured, such as engagement, search success rate, task completion, or user satisfaction.
+
+#### Step 3: Plan
+
+- **Staffing and resourcing recommendations:** Identify roles needed for ongoing operations, including content strategists, editors, information architects, and administrators.
+- **Content Management System (CMS) configuration:** Configure the CMS to support content strategy, taxonomy, workflow, and metadata requirements.
+- **Metadata and tagging framework:** Develop a standardized metadata approach to improve discoverability, searchability, and reporting.
+- **Communications and change management plan:** Create a plan to communicate purpose, process, and impact of content strategy to stakeholders and users.
+- **Content migration and transition plan:** Define migration approach for existing content, including audit, archive/revise/migrate decisions, and mapping to new taxonomy, metadata, and structure.
+
+#### Step 4: Create
+
+- **Content and asset creation:** Develop high-quality, user-centered content based on defined voice, tone, and taxonomy.
+- **Implement governance and workflow models:** Apply the established governance model to guide development and maintenance.
+- **Optimize content for search (SEO):** Use SEO best practices during creation, including relevant keywords, clear titles and descriptions, and structured metadata.
+- **Conduct quality assurance:** Integrate quality checks into the content workflow.
+- **Enable analytics and performance tracking:** Configure analytics to measure effectiveness against success criteria, including page views, search performance, engagement, and task completion.
+
+#### Step 5: Maintain
+
+- **Establish a content audit and review cycle:** Plan regular audits for accuracy, relevance, and alignment with user and business needs.
+- **Measure content against success metrics:** Continuously track performance using strategy-defined criteria.
+- **Drive continuous improvement:** Use findings from audits, analytics, and stakeholder feedback to improve content iteratively.
+
+### Content creation leading practices
+
+**General**
+
+- Understand the organization's goals and user needs to create meaningful and relevant content
+- Follow style guides for language and design to aid in learning and understanding
+- Understand how users think and speak about a topic area/subject
+- Communicate to people in a way that they understand
+
+**Content**
+
+- Be purposeful in the content to include or exclude
+- Content is consistently updated when available, otherwise, it is archived
+- Content is accessible and users benefit from the information
+- Content can be found whether internally, externally, or both
+- Content defines requirements in overall design and structure
+
+> **Quiz**
+> **Q:** What are the components that can help you create a successful content strategy?
+> **Options:**
+> - Content-oriented
+> - Solution-oriented
+> - Task-oriented
+> - People-oriented
+> **Correct:** Content-oriented, People-oriented
+> **Erklärung:** Content-oriented and people-oriented components can help you create a successful content strategy.
+
+## Content organization
+
+An organization scheme defines the shared characteristics of content items and influences the logical grouping of those items. An organization structure defines the types of relationships between content items and groups.
+
+### Schemes
+
+Schemes are methods used to categorize content and the various ways to connect each piece.
+
+**Exact organization schemes** divide information into clear, mutually exclusive categories. Easy to create and maintain, but challenging for users who must understand the predefined structure.
+
+- **Alphabetical:** Uses the alphabet to arrange content. Labels must match the terms users are likely to search for. A-Z indexes are often used as a secondary navigation tool.
+- **Chronological:** Organizes content by date. Requires agreement about when the subject of the content took place.
+- **Geographical:** Organizes content based on place. Fairly straightforward unless there are border disputes.
+
+**Subjective organization schemes** categorize information in a way that is specific to the organization or industry. Difficult to design but more useful than exact schemes.
+
+- **Topic:** Organizes content based on specific subject matter.
+- **Task:** Organizes content by considering the needs, actions, questions, or processes users bring to that content.
+- **Audience:** Organizes content for separate segments of users. Can be closed or open. Challenges arise when users fit multiple audience profiles or cannot easily self-identify.
+- **Metaphor:** Relates content to familiar concepts (e.g., folders, trash). Used in interface design but poses challenges when used as the primary organization scheme.
+
+> **Use a hybrid of these classification schemes with caution. They can easily confuse users if not implemented carefully. Only recommend a hybrid approach when the project team cannot reach consensus on a single, consistent categorization method.**
+
+### Structures
+
+Structures define how content relates to other content. They help users predict where to find information by reflecting user expectations and applying consistent ways of organizing and displaying content.
+
+- **Hierarchical structure:** Top-down (parent/child) relationships. Users start with broad categories and drill into narrower detail. Familiar to users from everyday structures like org charts and project plans.
+- **Sequential structure:** Organizes content in a step-by-step flow. Users move through a defined path in a specific order. Assumes sequence improves understanding or task completion. Example: e-commerce checkout (cart review, shipping, payment, confirmation).
+- **Matrix structure:** Users determine their own path — content is linked in multiple ways. Information is clearly labeled in links and buttons. Takes full advantage of hypertext/HTML principles.
+
+**Creating sustainable structures**
+
+Allow room for growth: structures should accommodate new content within existing sections and the creation of entirely new sections.
+
+- **Too shallow:** Overwhelming, cluttered menus — content is not grouped logically.
+- **Too deep:** Content hidden under too many layers, forcing users to click through multiple levels. Creates frustration and slows the experience.
+- Goal: strike a balance between shallow and deep.
+
+> **Quiz**
+> **Q:** Which of the following organization schemes categorizes information in a way that is specific to or defined by the organization or industry?
+> **Options:**
+> - Subjective
+> - Exact
+> - Matrix
+> - Hierarchical
+> **Correct:** Subjective
+> **Erklärung:** Subjective organization schemes categorize information in a way that is specific to or defined by the organization or industry. Though difficult to design, they are more useful than exact schemes.
+
+> **Quiz**
+> **Q:** When creating sustainable structures, avoid structures that are too shallow or too deep. What are the drawbacks of deep structures? Select all that apply.
+> **Options:**
+> - Users may have to click through too many levels to find information
+> - Important content can become buried and harder to discover
+> - It results in inconsistent operational and maintenance costs
+> - It may require long and confusing menus
+> - Users may become frustrated or abandon the task
+> - They make it harder to apply alphabetical sorting
+> **Correct:** Users may have to click through too many levels to find information, Important content can become buried and harder to discover, Users may become frustrated or abandon the task
+> **Erklärung:** Deep structures bury information beneath too many layers, burden the user to navigate through several levels to find content, and as a result users may abandon the task.
+
+## Content labels and navigation
+
+### Labeling
+
+Strong labels and titles help a visitor determine whether a page, link, or content under a heading will have the desired information.
+
+Users typically scan titles, headings, and links first, and long bodies of text only after they have decided it is likely worth their time.
+
+To maximize usability, use labels that give users a good sense of the content.
+
+![Esc.jpg](Esc.jpg)
+
+Labeling systems represent information on different levels — the relationship between users and content. Goals of labels:
+
+- Convey a lot of information in just a few words that are familiar to users, using language they already use in their daily lives
+- Show organization and navigation systems to the user
+- Avoid unfamiliar or made-up words that come at the expense of navigation
+
+**Two types of labels: textual and iconic.**
+
+**Textual labels**
+
+- **Contextual links:** Text placed within the body of content to create a connection between pages. Typically appear as links that rely on surrounding context to convey meaning. Must set clear expectations about where the user will be taken.
+- **Headings:** Establish a clear hierarchy within a page. A strong visual hierarchy uses consistent fonts, styles, and colors to guide attention and make the layout easy to scan. Effective headings signal where to start, what to read next, and what actions to take.
+- **Navigation system choices:** Require a high level of consistency. Users look for familiar page locations and visual layouts, and rely on predictable navigation labels. Using the same label for the same purpose (e.g., "Home", "Search", "Contact Us", "News") maintains clarity and reduces confusion.
+- **Index terms:** Also known as keywords, descriptive metadata, taxonomies, or controlled vocabularies. Describe all types of content in a consistent and structured way. Support precise searching and make browsing easier by organizing information into recognizable categories.
+
+**Iconic labels**
+
+Icons are visual symbols used to convey meaning, often replacing or supporting short text. Most commonly used in navigation systems and occasionally as section headings. Icons can enhance visual appeal and save space, but communicate far less than text and rely on users correctly interpreting their meaning. Without clear or familiar symbols, icons can easily confuse users.
+
+**Labeling considerations**
+
+Review all labels as a list to check for consistency of usage, punctuation, and letter case. Guidelines:
+
+- Establish clear and consistent naming conventions
+- Use a controlled vocabulary to maintain uniform terminology
+- Analyze content and organize it into logical categories
+- Conduct user testing to validate label clarity and usability
+- Use card sorting exercises to understand how users group information
+- Review search logs to identify common terms and user expectations
+- Plan for future growth so new labels won't conflict with existing ones
+- Define label scope based on the overall size and complexity of the site
+
+### Navigation systems
+
+Navigation design should be predictable — the visitor should be able to predict the meaning of every option before interacting with it.
+
+Navigation systems provide movement from one piece of information to another. Three primary types:
+
+- **Structural:** Includes global and local navigation, follows the site's hierarchy. Enables the user to move to pages above or below the current page.
+- **Associative:** Connects similar topics and content regardless of their location in the site structure. Links are often embedded in text but may be easy to miss.
+- **Utility:** Connects tools and features that help users find information about the site itself (e.g., site map, index, help page). Not part of the main hierarchy. Covers complementary functions like logging in/out or changing font size.
+
+### Searching systems
+
+Search systems help users find information within a self-service application, similar to a search engine. Especially valuable for knowledge bases with large volumes of content. Important to consider what content should be searchable and how search results are presented.
+
+![search.jpg](search.jpg)
+
+For example, if creating an internal search for company hardware, users want specific products — not related content like shipping policies. Offer filters to narrow results by product type and ensure results are easy to navigate.
+
+**Search patterns**
+
+Search patterns are design patterns for user behavior that facilitate findability and discoverability. The chosen pattern should be guided by expected user behavior and how you intend to lead visitors through the site.
+
+Six main search patterns:
+
+- **Exact:** Most basic pattern. Basis for more advanced patterns. Basic keyword matching. Can index variants (plurals, prefixes, suffixes).
+- **Faceted:** Navigate and refine a collection using attributes (facets). Grouped via tags to a page index. Allows incremental steps down a logical path. Often used in e-commerce and education.
+- **Parametric:** Presents multiple options (checkboxes, dropdowns) to begin the search. Allows the user to construct their query. Can return very few or no results due to the combination of parameters.
+- **Best first:** Assumes the user wants the most relevant result first. Ranking based on factors that produce a relevance score (frequency, exact match, weighting of metadata fields).
+- **Pagination:** Solves how to display a set of search results. Linear: moves page-to-page through a numerical sequence. Inline: results reflow to the next set while the rest of the page stays stable. Progressive: initial content loads, more loads as the user scrolls.
+- **Auto-complete / Auto-suggest:** Auto-complete helps users fill in a partial query. Auto-suggest presents related terms. Auto-suggest is popular in e-commerce for promoting, cross-selling, and upselling. Both save time and improve the experience.
+
+> **Quiz**
+> **Q:** Your customer wants the user to complete information using checkboxes to start their search. What search pattern should they use?
+> **Options:**
+> - Exact
+> - Pagination
+> - Parametric
+> - Auto-suggest
+> **Correct:** Parametric
+> **Erklärung:** The parametric search pattern asks users to make selections (checkboxes, dropdowns) to start their search. Allows the user to construct their query. Can return very few or no results due to the combination of parameters selected.
+
+## Portal technical architecture and widgets
+
+### Portal framework
+
+The portal framework is composed of a set of APIs, Angular services, directives, and tools for building portals. A portal is a group of pages linked by page IDs.
+
+![SP architecture_1.jpg](SP%20architecture_1.jpg)
+
+Framework components:
+
+- **URL:** Entered by the user; the framework uses it to determine which record is displayed.
+- **Portal record:** Framework uses the URL suffix to pick the appropriate portal record, which determines the theme and configurations.
+- **Homepage:** Loads with content represented by widgets. The framework loads the configured default homepage unless the URL specifies a page ID.
+- **Widget:** A reusable UI component that displays data or provides functionality within a portal page.
+- **Widget instance:** Gets its logic from the base widget template, client scripts, server scripts, and (depending on the widget) CSS.
+
+> **The default portal in the base system is now /esc.**
+
+To invite a user to a portal, provide them with a URL (e.g. `https://yourdomain.service-now.com/esc`).
+
+### Widgets and the Widget Editor
+
+Widgets display content on pages and perform one function. Reusable components that can be individually customized to present data, perform an action, or access a service. The same widget can be added multiple times on a page with a different configuration each time.
+
+More than 190 widgets are provided in the base system. They are self-contained, secure, and practical (search, requests, forms, lists, connect, and more).
+
+The Widget Editor lets you create widgets from scratch or customize existing ones. Write HTML, CSS, and JavaScript with real-time preview. Leading practice: use the Widget Editor to develop and modify Service Portal widgets. It lets you choose which parts of a widget to edit and hides the rest.
+
+![SP Widgets.jpg](SP%20Widgets.jpg)
+
+L-R: Most Viewed Articles widget; Registration widget; User profile widget.
+
+![Widget Editor.png](Widget%20Editor.png)
+
+> **When developing widgets, ask yourself: "Can this be used on another page?" Create widgets with reuse in mind to make future page development faster.**
+
+> **Before creating a custom widget, check the [Widget Library](https://docs.servicenow.com/csh?version=latest&topicname=widget-showcase) if one already exists. Further reference: [Widget Developer Guide](https://docs.servicenow.com/csh?version=latest&topicname=widget-dev-guide).**
+
+### Widget behavior
+
+Widgets execute a specified behavior on a page.
+
+**Use HTML to:**
+- Render the view — what end users see in their browser
+- Use information from the model and controller
+- Bind client script variables to your markup
+- Gather data from the end user
+
+**Use server-scripts to:**
+- Load the initial data in the widget
+- Send record data to the widget client script (Controller)
+- Run server-side queries/scripts
+
+**Use client-scripts to:**
+- Map server data from JavaScript and JSON objects to client objects
+- Process data before rendering it
+- Pass user input and data back to the server for processing
+
+### Additional widget components
+
+| Component | Functions |
+|---|---|
+| CSS and Bootstrap | Style the widget |
+| Link function | Directly manipulate the DOM |
+| Option schema | Create options a systems administrator can use to configure the widget instance |
+| Angular providers | Keep widgets in sync; share context between widgets; maintain a persistent state; create reusable behaviors and UI components for use in multiple widgets |
+| Dependencies | External resources used by a widget (e.g. JavaScript and CSS files) |
+
+**Style a widget**
+
+External CSS can be brought in by copying and pasting the code into a style sheet record and attaching it to a theme record via the CSS Includes related list. Once created, a style sheet can be attached to any theme record. Use the CSS/SCSS editor to create specific styles for the widget.
+
+**Bootstrap and Font Awesome**
+
+Both are installed in the platform and can be referenced in HTML.
+
+- Bootstrap: reusable components providing iconography, dropdowns, input groups, navigation, alerts, and more.
+- Font Awesome: icon library and toolkit. ServiceNow includes the most current release with every new release.
+
+**Hierarchy of applying style**
+
+Understand the hierarchy of styles applied in your Service Portal and which CSS is overwritten by which component.
+
+![Service Portal widget.png](Service%20Portal%20widget.png)
+
+### Solutions built by ServiceNow
+
+Widgets are objects added to a Service Portal, a landing page, or a dashboard. Examples of what is possible on the Now Platform:
+
+- **Event Ticketing:** Widgets added to the CSM Agent Workspace landing page to assist agents in tracking cases.
+
+![QuickTix.png](QuickTix.png)
+
+- **Conference Room Booking:** Mobile interface using widgets to help employees book a conference room, report facilities issues, and check the status of their requests.
+
+![room booking.png](room%20booking.png)
+
+- **Sustainability:** Dashboard with widgets to help analysts track customer sustainability scores.
+
+![Sustainability.png](Sustainability.png)
+
+- **Auto Customer Service:** Mobile interface allowing customers to schedule vehicle service, view repair items and costs, and confirm work to proceed.
+
+![Car servicing.png](Car%20servicing.png)
+
+> **Quiz**
+> **Q:** Which of the following are true about widgets? Select all that apply.
+> **Options:**
+> - Widgets execute a specified behavior on a page
+> - Widgets display content on pages
+> - Widgets perform one function
+> - The same widget can be added once per page
+> - A widget is technically an AngularJS Directive
+> **Correct:** Widgets execute a specified behavior on a page, Widgets display content on pages, Widgets perform one function, A widget is technically an AngularJS Directive
+> **Erklärung:** Widgets execute a specified behavior on a page, display content, perform one function, and are technically AngularJS directives. The same widget can be added multiple times per page.
+
+## Portal tools
+
+### Widget Diagnostic Tool
+
+Identifies and resolves portal page issues related to bugs in widget code. Widgets are color-coded by customization level:
+
+| Color | Description |
+|---|---|
+| Green | Base system widget |
+| Yellow | Cloned widget |
+| Blue | New widget |
+| Red | Customized widget |
+
+![Widget customizations.jpg](Widget%20customizations.jpg)
+
+Activate via CTRL + right-click on any widget on a portal page, then select "Show Widget Customizations".
+
+- **Green (Base system widget):** No modifications, including widgets where only instance options were set.
+- **Red (Customized widget):** Base system widget with direct code modifications — widget code, option schema, dependencies, ng-templates, or Angular Providers changed.
+- **Blue (New widget):** Widget created from scratch.
+
+**Widget diagnostics window:** Review and compare widget code directly inside the diagnostics window.
+
+![Widget diagnostics_1.png](Widget%20diagnostics_1.png)
+
+Review code within a widget record or its related records: widget dependencies, Angular providers, Angular templates. Compare with a previous version or the base system version.
+
+**Widget Diagnostic Tool limitations:**
+
+- Cannot fix or revert code directly in the tool — navigate away from the portal to change code
+- Navigating to another portal page while using the tool disables it
+- Uses color to categorize widgets — may not be accessible for visually impaired users
+- Only first-level widget dependencies are listed — nested dependencies must be checked in the widget record directly
+- No way to track a widget dependency after it has been deleted
+
+**Troubleshooting by deactivating widgets:** If the problematic widget is unknown, deactivate them one at a time to isolate the issue.
+
+### Portal Analyzer
+
+Scheduled job that can be run on-demand. Provides a list of all widgets included on all Service Portal pages.
+
+**What it shows:**
+- What pages exist and which widgets they contain
+- Which pages are not being used
+- Which widgets have been customized and to what level
+
+**Data storage:** Stored in the Service Portal Analyzer table (`sp_portal_analyzer`). Includes: customization level per widget, number of page views, number of unique user visits. Each widget on a page gets its own row — rows share the same user count. Running the job deletes the current records first.
+
+**Fields:** Page, Page ID, Widget, Widget ID, Status (OOTB / Cloned / Customized / New), Page views, User count.
+
+**Log entries:** Service Portal log records are stored in `sp_log` (Service Portal Log Entries). Specific to Service Portal events — use for reporting, troubleshooting, and debugging.
+
+![Log list.jpg](Log%20list.jpg)
+
+### User Experience Analytics
+
+Tracks key metrics in Service Portal (e.g. catalog orders, article views) to optimize performance and identify popular content. Accessible via the User Experience Analytics application.
+
+![User experience.jpg](User%20experience.jpg)
+
+> **Further reading: [User Experience Analytics for Service Portal](https://docs.servicenow.com/csh?version=latest&topicname=sp-analytics) — how to visualize metrics and interactions to improve the Service Portal user experience.**
+
+> **Quiz**
+> **Q:** Which of the following provides a list of all widgets included on all Service Portal pages?
+> **Options:**
+> - User Experience Analytics
+> - Log entries
+> - Portal analyzer
+> - Google analytics
+> **Correct:** Portal analyzer
+> **Erklärung:** The Portal Analyzer provides a list of all widgets included on all Service Portal pages.
+
+## Summary — Key Takeaways (Part 2)
+
+**Takeaway 1:** Implement content strategy and organization principles — plan, create, and maintain meaningful content that is clear, well-organized, and aligns with user needs and business goals.
+
+**Takeaway 2:** Understand the ServiceNow portal framework — familiarize yourself with its components, technologies, and layout for effective portal creation.
+
+**Takeaway 3:** Use pre-built widgets — create dynamic, interactive experiences that adapt to user needs. Take advantage of their reusability, configurability, and modular design to streamline development.
+
+### Additional Resources
+
+- [Introducing Interaction Design](http://boxesandarrows.com/introducing-interaction-design/) — Webpage
+- [Configurable Portal Widgets Overview](https://learning.servicenow.com/lxp/en/customer-service-management/configurable-portal-widgets-overview?id=learning_course_prev&course_id=85f675fa47ac1a94c00af235126d4374) — ServiceNow University
+
+
